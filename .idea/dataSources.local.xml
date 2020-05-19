@@ -3,7 +3,11 @@
   <component name="dataSourceStorageLocal">
     <data-source name="coffeTeaShop" uuid="b8f6c4cb-83a4-4e72-86a2-9a75254bf505">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0" />
-      <auth-provider>no-auth</auth-provider>
+      <schema-mapping />
+    </data-source>
+    <data-source name="coffeTeaShop [2]" uuid="73db75ff-7c1e-4f6d-a253-24ac93968025">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0" />
+      <auth-required>false</auth-required>
       <schema-mapping />
     </data-source>
   </component>
