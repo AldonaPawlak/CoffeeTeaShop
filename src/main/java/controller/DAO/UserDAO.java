@@ -8,9 +8,10 @@ public class UserDAO extends DataBaseDAO implements DAO{
     }
     @Override
     public void select() {
+        connect();
         try{
-            connect();
-            connection.setAutoCommit(false);
+
+//            connection.setAutoCommit(false);
             ResultSet rs = statement.executeQuery( "SELECT * FROM Users;" );
             while ( rs.next() ) {
                 int id = rs.getInt("Id_user");
