@@ -9,8 +9,8 @@ public class Input {
         System.out.print(message);
         String input = scanner.next();
         if (input.equals(null) || input.equals(" ")){
-            System.out.print(message);
-            input = scanner.next();
+            System.out.print(message);//tu trzeba przekazac nowy message w stylu ze cos nie tak i podaj ponownie
+            input = scanner.next()
         }
         return input;
     }
