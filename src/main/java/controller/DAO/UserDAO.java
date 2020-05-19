@@ -41,12 +41,36 @@ public class UserDAO extends DataBaseDAO implements DAO{
 
     @Override
     public void update() {
+        try {
+            connect();
+            connection.setAutoCommit(false);
+            String sql = "UPDATE Users set Name = 'Putek' where Id_user = 1;";
+            statement.executeUpdate(sql);
+            connection.commit();
 
+            statement.close();
+            connection.close();
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
     }
 
     @Override
     public void delete() {
+        try {
+            connect();
+            connection.setAutoCommit(false);
+            String sql = "DELETE from Users where Id_user = 2;";
+            statement.executeUpdate(sql);
+            connection.commit();
 
+            statement.close();
+            connection.close();
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
     }
 
     @Override
