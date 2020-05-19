@@ -3,12 +3,12 @@ package view;
 import java.util.Scanner;
 
 public class Input {
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
     public String getStringInput(String message) {
         System.out.print(message);
         String input = scanner.next();
-        if (input.equals(null) || input.equals(" ")){
+        if (input == null || input.equals(" ")){
             System.out.println("Something went wrong. Try again");
             System.out.print(message);
             input = scanner.next();
