@@ -13,10 +13,12 @@ public abstract class DataBaseDAO<Object> {
     public static final String CONNECTION_STRING = "jdbc:sqlite:" + DB_NAME;
 
     public void connect() {
+        this.connection = null;
+        this.statement = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection(CONNECTION_STRING);
-            statement = connection.createStatement();
+            this.connection = DriverManager.getConnection(CONNECTION_STRING);
+            this.statement = connection.createStatement();
         } catch (ClassNotFoundException e) {
             e.getStackTrace();
         } catch (SQLException e) {
