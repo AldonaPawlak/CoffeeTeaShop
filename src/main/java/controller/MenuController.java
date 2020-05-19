@@ -1,6 +1,5 @@
 package controller;
 
-import com.sun.tools.javac.comp.Todo;
 import controller.DAO.UserDAO;
 import model.User;
 import view.UI;

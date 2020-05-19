@@ -25,4 +25,11 @@ public class UI {
     public void printTableOf(Object object){
         TableProvider tableProvider = new TableProvider();
     }
+
+    public void printMenu() {
+        System.out.println("menu\n"
+                         + "1 - log in\n"
+                         + "2 - registartion\n"
+                         + "0 - EXIT\n");
+    }
 }
