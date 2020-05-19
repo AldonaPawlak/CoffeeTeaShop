@@ -9,7 +9,7 @@ public abstract class DataBaseDAO<Object> {
     protected Connection connection;
     protected Statement statement;
 
-    public static final String DB_NAME = "src/main/resources/coffeeTeaShop.db";
+    public static final String DB_NAME = "src/main/resources/coffeTeaShop.db";
     public static final String CONNECTION_STRING = "jdbc:sqlite:" + DB_NAME;
 
     public void connect() {

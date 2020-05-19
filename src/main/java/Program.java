@@ -18,6 +18,8 @@ public class Program {
             case 1:
                 ui.print("Login");
                 Login login = new Login();
+                userDAO.insertInto();
+                userDAO.select();
                 break;
             case 2:
                 ui.print("Registration");
