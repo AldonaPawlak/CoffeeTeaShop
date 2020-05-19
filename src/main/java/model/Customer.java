@@ -1,20 +1,17 @@
 package model;
 
-public class Customer {
-    private String phone;
-    private String address;
+public class Customer extends User {
 
-    public Customer(String phone, String address){
-        this.phone = phone;
-        this.address = address;
+    private final String phoneNumber;
+
+
+    public Customer(int id, String email, String password, String name, String surname, String phoneNumber) {
+        super(id, email, password, name, surname);
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public String getAddress() {
-        return address;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 }
 
