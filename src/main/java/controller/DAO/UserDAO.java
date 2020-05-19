@@ -53,6 +53,7 @@ public class UserDAO extends DataBaseDAO implements DAO{
     public void insertInto() {
         try {
             connect();
+            connection.setAutoCommit(false);
             String sql = "INSERT INTO Users (Id_user,Name,Surname,e-mail,Password,Phone,rights) " +
                     "VALUES (2, 'Paul', 'Nowak', 'nowak@onet.pl', 'nowak1234', 123456789,'customer');";
             statement.executeUpdate(sql);
