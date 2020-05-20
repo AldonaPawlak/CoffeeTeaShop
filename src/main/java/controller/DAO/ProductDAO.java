@@ -49,6 +49,19 @@ public class ProductDAO extends DataBaseDAO implements DAO{
 
     @Override
     public void insertInto() {
+        try {
+            connect();
+            connection.setAutoCommit(false);
+            String sql = "INSERT INTO Categories (Name, Description) " +
+                    "VALUES ('Coffee cups', 'Ceramika Bolesławiec');";
+            statement.executeUpdate(sql);
 
+            statement.close();
+            connection.commit();
+            connection.close();
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
     }
 }
