@@ -32,4 +32,33 @@ public class UI {
                          + "2 - registartion\n"
                          + "0 - EXIT\n");
     }
+
+    public void printUserMenu() {
+        //TODO
+        // see what is in the basket
+        // see my previous orders
+        // see available products with prices
+        // get a list from specific category
+        // check availability of specific product
+        // see statistics of my orders
+    }
+
+    public void printProductMenu() {
+        System.out.println("Product menu\n"
+                         + "1 - add product\n"
+                         + "2 - rate product (1-5)");
+    }
+
+    public void printUserBasketMenu() {
+        System.out.println("Basket menu\n"
+                + "1 - Change product quantity\n"
+                + "2 - Delete product from cart\n"
+                + "3 - Place order");
+    }
+
+    public void printBasketContent() {
+        //TODO
+    }
+
+
 }
