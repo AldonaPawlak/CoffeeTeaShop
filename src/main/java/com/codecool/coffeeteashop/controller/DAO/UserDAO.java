@@ -1,12 +1,14 @@
 package com.codecool.coffeeteashop.controller.DAO;
 
+import com.codecool.coffeeteashop.model.User;
 import com.codecool.coffeeteashop.view.Input;
 
 import java.sql.*;
 
-public class UserDAO extends DataBaseDAO implements DAO{
+public class UserDAO<Person> extends DataBaseDAO implements DAO{
 
     private final Input input  = new Input();
+    private User user;
 
     public UserDAO(){
     }
@@ -14,7 +16,6 @@ public class UserDAO extends DataBaseDAO implements DAO{
     public void select() {
         connect();
         try{
-//            connection.setAutoCommit(false);
             connect();
             connection.setAutoCommit(false);
             ResultSet rs = statement.executeQuery( "SELECT * FROM Users;" );  //tabela z zestawem wyników zapytania
@@ -101,6 +102,39 @@ public class UserDAO extends DataBaseDAO implements DAO{
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
+    }
+    public User selectUser(){
+
+        String userEmail = input.getStringInput("Enter your email: ");
+        String userPassword = input.getStringInput("Enter your password: ");
+        connect();
+        try{
+            connect();
+            connection.setAutoCommit(false);
+            ResultSet rs = statement.executeQuery( String.format("SELECT * FROM Users WHERE mail='%s'AND Password='%s' ;", userEmail, userPassword) );
+            while ( rs.next() ) {
+                int id = rs.getInt("Id_user");
+                String name = rs.getString("Name");
+                String surname = rs.getString("Surname");
+                String mail = rs.getString("mail");
+                String password = rs.getString("Password");
+                int phone = rs.getInt("Phone");
+                String rights = rs.getString("rights");
+
+                if (mail!=null & password!=null){
+                    User user = new User(id, name, surname, mail, password, phone, rights);
+                    return user;
+                }
+
+            }
+            rs.close();
+            statement.close();
+            connection.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

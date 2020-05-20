@@ -7,7 +7,7 @@ public class Input {
 
     public String getStringInput(String message) {
         System.out.print(message);
-        String input = scanner.next();
+        String input = scanner.nextLine();
         if (input == null || input.equals(" ")){
             System.out.println("Something went wrong. Try again");
             System.out.print(message);
