@@ -16,14 +16,14 @@ public class UserDAO extends DataBaseDAO implements DAO{
         try{
 
 //            connection.setAutoCommit(false);
-            ResultSet rs = statement.executeQuery( "SELECT * FROM Users2;" );
+            ResultSet rs = statement.executeQuery( "SELECT * FROM Users;" );
             while ( rs.next() ) {
-                int id = rs.getInt("id");
-                String  name = rs.getString("name");
-                String surname  = rs.getString("surname");
-                String mail = rs.getString("email");
-                String password = rs.getString("password");
-                int phone = rs.getInt("phone");
+                int id = rs.getInt("Id_user");
+                String  name = rs.getString("Name");
+                String surname  = rs.getString("Surname");
+                String mail = rs.getString("mail");
+                String password = rs.getString("Password");
+                int phone = rs.getInt("Phone");
                 String rights = rs.getString("rights");
 
                 System.out.println( "ID = " + id );
@@ -49,7 +49,7 @@ public class UserDAO extends DataBaseDAO implements DAO{
         try {
             connect();
             connection.setAutoCommit(false);
-            String sql = "UPDATE Users2 set name = 'Putek' where id = 1;";
+            String sql = "UPDATE Users set name = 'Putek' where id = 1;";
             statement.executeUpdate(sql);
             connection.commit();
 
@@ -66,7 +66,7 @@ public class UserDAO extends DataBaseDAO implements DAO{
         try {
             connect();
             connection.setAutoCommit(false);
-            String sql = "DELETE from Users2 where id = 2;";
+            String sql = "DELETE from Users where id = 2;";
             statement.executeUpdate(sql);
             connection.commit();
 
@@ -89,7 +89,7 @@ public class UserDAO extends DataBaseDAO implements DAO{
         try {
             connect();
             connection.setAutoCommit(false);
-            String sql = String.format("INSERT INTO Users2 (name,surname,email,password,phone,rights) " +
+            String sql = String.format("INSERT INTO Users (Name,Surname,mail,Password,Phone,rights) " +
                     "VALUES ('%s', '%s', '%s', '%s', %d,'%s');", name, surname, email, password, phone, rights);
             statement.executeUpdate(sql);
 
