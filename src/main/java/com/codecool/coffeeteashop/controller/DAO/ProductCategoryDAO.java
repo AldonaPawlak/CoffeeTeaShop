@@ -60,6 +60,21 @@ public class ProductCategoryDAO extends DataBaseDAO implements DAO{
 
     @Override
     public void insertInto() {
+        String name = input.getStringInput("Enter the new name of category: ");
+        String description = input.getStringInput("Enter description: ");
+        try {
+            connect();
+            connection.setAutoCommit(false);
+            String sql = String.format("INSERT INTO Categories (Name,Description) " +
+                    "VALUES ('%s', '%s');", name, description);
+            statement.executeUpdate(sql);
 
+            statement.close();
+            connection.commit();
+            connection.close();
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
     }
 }
