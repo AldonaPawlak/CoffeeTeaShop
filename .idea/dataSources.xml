@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="coffeTeaShop" uuid="b8f6c4cb-83a4-4e72-86a2-9a75254bf505">
-      <driver-ref>sqlite.xerial</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\aldon\Desktop\CoffeeTeaShop\src\main\resources\coffeTeaShop.db</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="coffeTeaShop [2]" uuid="73db75ff-7c1e-4f6d-a253-24ac93968025">
+    <data-source source="LOCAL" name="coffeTeaShop.db" uuid="e160aaa2-b5fd-4772-a81b-c29ecb298874">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
