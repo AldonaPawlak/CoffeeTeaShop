@@ -7,7 +7,7 @@ import com.codecool.coffeeteashop.view.Input;
 public class Login {
 
 
-    private Input input;
+    private Input input = new Input();
     private User user;
 
     public void loginToDb(){
@@ -15,13 +15,14 @@ public class Login {
         UserDAO userDao = new UserDAO();
         user =  userDao.selectUser();
         if (user == null){
-            System.out.println("You have to register first");
+            System.out.println("You have to register first\n");
+            input.getEmptyInput();
             userDao.insertInto();
+
+//            registration.register();
         }
         else {
-            System.out.println("You might do shopping");
+            System.out.println("\nYou might do shopping");
         }
-
-
     }
 }

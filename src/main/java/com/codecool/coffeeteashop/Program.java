@@ -30,7 +30,8 @@ public class Program {
                 break;
             case 2:
                 ui.print("Registration");
-                Registration registration = new Registration();
+                Registration registration = new Registration(userDAO);
+                registration.register();
                 break;
             case 0:
                 break;
