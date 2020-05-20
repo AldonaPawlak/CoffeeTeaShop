@@ -17,7 +17,6 @@ public class MenuController {
     }
 
     public void createUserProfileMenu() {
-        // TODO
     }
 
     public UserDAO getUserDao() {
