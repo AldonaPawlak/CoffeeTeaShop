@@ -16,7 +16,7 @@ public class Login {
         user =  userDao.selectUser();
         if (user == null){
             System.out.println("You have to register first");
-            userDao.insertInto();
+            //userDao.insertInto();
         }
         else {
             System.out.println("You might do shopping");
