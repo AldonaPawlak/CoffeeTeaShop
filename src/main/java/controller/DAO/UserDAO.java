@@ -1,8 +1,12 @@
 package controller.DAO;
 
+import view.Input;
+
 import java.sql.*;
 
 public class UserDAO extends DataBaseDAO implements DAO{
+
+    private final Input input  = new Input();
 
     public UserDAO(){
     }
@@ -12,14 +16,14 @@ public class UserDAO extends DataBaseDAO implements DAO{
         try{
 
 //            connection.setAutoCommit(false);
-            ResultSet rs = statement.executeQuery( "SELECT * FROM Users;" );
+            ResultSet rs = statement.executeQuery( "SELECT * FROM Users2;" );
             while ( rs.next() ) {
-                int id = rs.getInt("Id_user");
-                String  name = rs.getString("Name");
-                String surname  = rs.getString("Surname");
-                String mail = rs.getString("mail");
-                String password = rs.getString("Password");
-                int phone = rs.getInt("Phone");
+                int id = rs.getInt("id");
+                String  name = rs.getString("name");
+                String surname  = rs.getString("surname");
+                String mail = rs.getString("email");
+                String password = rs.getString("password");
+                int phone = rs.getInt("phone");
                 String rights = rs.getString("rights");
 
                 System.out.println( "ID = " + id );
@@ -45,7 +49,7 @@ public class UserDAO extends DataBaseDAO implements DAO{
         try {
             connect();
             connection.setAutoCommit(false);
-            String sql = "UPDATE Users set Name = 'Putek' where Id_user = 1;";
+            String sql = "UPDATE Users2 set name = 'Putek' where id = 1;";
             statement.executeUpdate(sql);
             connection.commit();
 
@@ -62,7 +66,7 @@ public class UserDAO extends DataBaseDAO implements DAO{
         try {
             connect();
             connection.setAutoCommit(false);
-            String sql = "DELETE from Users where Id_user = 2;";
+            String sql = "DELETE from Users2 where id = 2;";
             statement.executeUpdate(sql);
             connection.commit();
 
@@ -76,11 +80,17 @@ public class UserDAO extends DataBaseDAO implements DAO{
 
     @Override
     public void insertInto() {
+        String name = input.getStringInput("Enter name: ");
+        String surname = input.getStringInput("Enter surname: ");
+        String email = input.getStringInput("Enter emai: ");
+        String password = input.getStringInput("Enter password: ");
+        int phone = input.getNumericInput("Enter phone number: ", 0, 999999999);
+        String rights = "customer";
         try {
             connect();
             connection.setAutoCommit(false);
-            String sql = "INSERT INTO Users (Id_user,Name,Surname,mail,Password,Phone,rights) " +
-                    "VALUES (2, 'Paul', 'Nowak', 'nowak@onet.pl', 'nowak1234', 123456789,'customer');";
+            String sql = String.format("INSERT INTO Users2 (name,surname,email,password,phone,rights) " +
+                    "VALUES ('%s', '%s', '%s', '%s', %d,'%s');", name, surname, email, password, phone, rights);
             statement.executeUpdate(sql);
 
             statement.close();
