@@ -31,6 +31,7 @@ public class Program {
             case 2:
                 ui.print("Registration");
                 Registration registration = new Registration();
+                registration.register();
                 break;
             case 0:
                 break;
