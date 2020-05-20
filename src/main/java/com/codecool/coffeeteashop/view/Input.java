@@ -43,4 +43,13 @@ public class Input {
         int option = Integer.parseInt(userInput);
         return option >= from && option < to;
     }
+
+    public Scanner getScanner() {
+        return scanner;
+    }
+
+    public void getEmptyInput() {
+        System.out.println("Press enter to continue");
+        scanner.nextLine();
+    }
 }
