@@ -19,7 +19,6 @@ public class Login {
             input.getEmptyInput();
             userDao.insertInto();
 
-//            registration.register();
         }
         else {
             System.out.println("\nYou might do shopping");
