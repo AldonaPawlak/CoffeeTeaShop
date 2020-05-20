@@ -10,9 +10,10 @@ public class UserDAO extends DataBaseDAO implements DAO{
     public void select() {
         connect();
         try{
-
 //            connection.setAutoCommit(false);
-            ResultSet rs = statement.executeQuery( "SELECT * FROM Users;" );
+            connect();
+            connection.setAutoCommit(false);
+            ResultSet rs = statement.executeQuery( "SELECT * FROM Users;" );  //tabela z zestawem wyników zapytania
             while ( rs.next() ) {
                 int id = rs.getInt("Id_user");
                 String  name = rs.getString("Name");

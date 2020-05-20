@@ -1,3 +1,6 @@
+import controller.DAO.DAO;
+import controller.DAO.ProductCategoryDAO;
+import controller.DAO.ProductDAO;
 import controller.DAO.UserDAO;
 import controller.Login;
 import controller.MenuController;
@@ -10,6 +13,8 @@ public class Program {
     private UI ui = new UI();
     private MenuController menuController;
     private UserDAO userDAO = new UserDAO();
+    private ProductDAO productDAO = new ProductDAO();
+    private ProductCategoryDAO productCategoryDAO = new ProductCategoryDAO();
 
     public void runProgram() {
         ui.printMenu();
@@ -21,11 +26,13 @@ public class Program {
                 //userDAO.insertInto(); raz wsadzony obiekt nie może byc wsadzony drugi raz dlatego ta funkcja wywala błąd bo jest na sztywno
                 userDAO.select();
                 ui.print("--------");
-                userDAO.update();
-                userDAO.select();
+//                userDAO.update();
+//                userDAO.select();
                 ui.print("--------");
                 //userDAO.delete(); tutaj tak samo, jak sie usunie raz dany obiekt to nie da się drugi raz go usunąć
-                userDAO.select();
+//                productDAO.select();
+                productDAO.insertInto();
+                productCategoryDAO.select();
                 break;
             case 2:
                 ui.print("Registration");
