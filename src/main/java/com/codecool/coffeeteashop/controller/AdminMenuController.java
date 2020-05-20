@@ -9,7 +9,5 @@ public class AdminMenuController {
     public void addNewProductCategory () {
         System.out.println("ADDING THE NEW PRODUCT CATEGORY");
         productCategoryDAO.insertInto();
-
-
     }
 }
