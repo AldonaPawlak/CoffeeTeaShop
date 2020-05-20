@@ -1,8 +1,12 @@
 package controller.DAO;
 
+import view.Input;
+
 import java.sql.*;
 
 public class UserDAO extends DataBaseDAO implements DAO{
+
+    private final Input input  = new Input();
 
     public UserDAO(){
     }
@@ -77,11 +81,17 @@ public class UserDAO extends DataBaseDAO implements DAO{
 
     @Override
     public void insertInto() {
+        String name = input.getStringInput("Enter name: ");
+        String surname = input.getStringInput("Enter surname: ");
+        String email = input.getStringInput("Enter emai: ");
+        String password = input.getStringInput("Enter password: ");
+        int phone = input.getNumericInput("Enter phone number: ", 0, 999999999);
+        String rights = "customer";
         try {
             connect();
             connection.setAutoCommit(false);
-            String sql = "INSERT INTO Users (Id_user,Name,Surname,mail,Password,Phone,rights) " +
-                    "VALUES (2, 'Paul', 'Nowak', 'nowak@onet.pl', 'nowak1234', 123456789,'customer');";
+            String sql = String.format("INSERT INTO Users (Name,Surname,mail,Password,Phone,rights) " +
+                    "VALUES ('%s', '%s', '%s', '%s', %d,'%s');", name, surname, email, password, phone, rights);
             statement.executeUpdate(sql);
 
             statement.close();
@@ -92,4 +102,5 @@ public class UserDAO extends DataBaseDAO implements DAO{
             System.exit(0);
         }
     }
+
 }

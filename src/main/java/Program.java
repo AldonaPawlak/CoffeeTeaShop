@@ -23,16 +23,16 @@ public class Program {
             case 1:
                 ui.print("Login");
                 Login login = new Login();
-                //userDAO.insertInto(); raz wsadzony obiekt nie może byc wsadzony drugi raz dlatego ta funkcja wywala błąd bo jest na sztywno
-                userDAO.select();
-                ui.print("--------");
+                userDAO.insertInto();  //  raz wsadzony obiekt nie może byc wsadzony drugi raz dlatego ta funkcja wywala błąd bo jest na sztywno
+//                userDAO.select();
+//                ui.print("--------");
 //                userDAO.update();
 //                userDAO.select();
-                ui.print("--------");
+//                ui.print("--------");
                 //userDAO.delete(); tutaj tak samo, jak sie usunie raz dany obiekt to nie da się drugi raz go usunąć
 //                productDAO.select();
-                productDAO.insertInto();
-                productCategoryDAO.select();
+//                productDAO.insertInto();
+//                productCategoryDAO.select();
                 break;
             case 2:
                 ui.print("Registration");
