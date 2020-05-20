@@ -1,3 +1,5 @@
+import controller.DAO.DAO;
+import controller.DAO.ProductDAO;
 import controller.DAO.UserDAO;
 import controller.Login;
 import controller.MenuController;
@@ -10,6 +12,7 @@ public class Program {
     private UI ui = new UI();
     private MenuController menuController;
     private UserDAO userDAO = new UserDAO();
+    private ProductDAO productDAO = new ProductDAO();
 
     public void runProgram() {
         ui.printMenu();
@@ -25,7 +28,7 @@ public class Program {
                 userDAO.select();
                 ui.print("--------");
                 //userDAO.delete(); tutaj tak samo, jak sie usunie raz dany obiekt to nie da się drugi raz go usunąć
-                userDAO.select();
+                productDAO.select();
                 break;
             case 2:
                 ui.print("Registration");

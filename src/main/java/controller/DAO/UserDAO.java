@@ -11,7 +11,7 @@ public class UserDAO extends DataBaseDAO implements DAO{
         try{
             connect();
             connection.setAutoCommit(false);
-            ResultSet rs = statement.executeQuery( "SELECT * FROM Users;" );
+            ResultSet rs = statement.executeQuery( "SELECT * FROM Users;" );  //tabela z zestawem wyników zapytania
             while ( rs.next() ) {
                 int id = rs.getInt("Id_user");
                 String  name = rs.getString("Name");
