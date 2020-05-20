@@ -78,7 +78,7 @@ public class OrderDAO extends DataBaseDAO implements DAO {
             connect();
             connection.setAutoCommit(false);
             String sql = String.format("INSERT INTO Orders (Id_order,Id_Customer,Order_status,Order_payAt,Order_createdAt) " +
-                    "VALUES ('%d', '%d', '%s', '%t', %t',);", 3, 3, "paid"", 20122020, 21122020);
+                    "VALUES ('%d', '%d', '%s', '%t', %t',);", 3, 3, "paid", 20122020, 21122020);
             statement.executeUpdate(sql);
 
             statement.close();
