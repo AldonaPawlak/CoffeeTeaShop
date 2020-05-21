@@ -1,3 +1,4 @@
+
 package com.codecool.coffeeteashop.controller;
 
 import com.codecool.coffeeteashop.controller.DAO.ProductDAO;
@@ -18,7 +19,7 @@ public class CustomerMenuController {
         final int userChoice = input.getIntegerInput("What do you want to do right now?\n");
         switch (userChoice) {
             case 1 : {
-
+                //checkAvailibilityOfProduct(); call in other place
                 break;
             }
             case 2 : {
@@ -78,7 +79,7 @@ public class CustomerMenuController {
         if (productName.equalsIgnoreCase("Arabica")) {
             return 1;
         }
-        else if (productName.equalsIgnoreCase("Robutsa")) {
+        else if (productName.equalsIgnoreCase("Robusta")) {
             return 2;
         }
         else if (productName.equalsIgnoreCase("Liberika")) {
