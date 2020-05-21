@@ -25,7 +25,7 @@ public class Cart {
     }
 
     public void addToCart() {
-        productDAO.insertInto();
+         // TODO
     }
 
     public void editCart() {
