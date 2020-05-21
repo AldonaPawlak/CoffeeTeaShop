@@ -1,9 +1,12 @@
 package com.codecool.coffeeteashop.controller.DAO;
 
+import com.codecool.coffeeteashop.view.Input;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ProductDAO extends DataBaseDAO implements DAO{
+    Input input = new Input();
 
     public void select() {
         try{
@@ -61,11 +64,18 @@ public class ProductDAO extends DataBaseDAO implements DAO{
 
     @Override
     public void insertInto() {
+        String name = input.getStringInput("Enter new name of the product: ");
+        String description = input.getStringInput("Enter description: ");
+        int price = input.getIntegerInput("Enter price: ");
+        int quantity = input.getIntegerInput("Enter quantity: ");
+        int idCategory = input.getIntegerInput("Enter id category ");
+        boolean isAvailable = true;
+
         try {
             connect();
             connection.setAutoCommit(false);
-            String sql = "INSERT INTO Categories (Name, Description) " +
-                    "VALUES ('Coffee cups', 'Ceramika Bolesławiec');";
+            String sql = String.format("INSERT INTO Products (Name,Description, Price, Quantity, Id_category, isAvailable) " +
+                    "VALUES ('%s', '%s', '%d', '%d', '%d', '%b');", name, description, price, quantity, idCategory, isAvailable);
             statement.executeUpdate(sql);
 
             statement.close();
