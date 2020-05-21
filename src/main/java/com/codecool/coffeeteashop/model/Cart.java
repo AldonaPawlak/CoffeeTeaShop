@@ -1,5 +1,7 @@
 package com.codecool.coffeeteashop.model;
 
+import com.codecool.coffeeteashop.controller.DAO.ProductDAO;
+
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -7,6 +9,7 @@ public class Cart {
     private Integer id;
     private ArrayList<Product> products;
     Product product;
+    ProductDAO productDAO = new ProductDAO();
 
     public Cart(int id, ArrayList<Product> products) {
         this.id = id;
@@ -22,7 +25,7 @@ public class Cart {
     }
 
     public void addToCart() {
-        // TODO
+        productDAO.insertInto();
     }
 
     public void editCart() {
