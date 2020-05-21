@@ -2,7 +2,6 @@ package com.codecool.coffeeteashop.controller.DAO;
 
 import com.codecool.coffeeteashop.view.Input;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -54,7 +53,7 @@ public class ProductCategoryDAO extends DataBaseDAO implements DAO{
             if (x > 0)
                 System.out.println("Name of the product category successfully updated");
             else
-                System.out.println("ERROR OCCURED :(");
+                System.out.println("ERROR OCCURRED :(");
 
 
             connection.commit();
