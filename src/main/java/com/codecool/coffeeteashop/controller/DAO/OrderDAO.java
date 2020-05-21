@@ -9,30 +9,30 @@ import java.sql.SQLException;
 public class OrderDAO extends DataBaseDAO implements DAO {
     private User user;
 
-    public OrderDAO(User user){
+    public OrderDAO(User user) {
         this.user = user;
     }
 
     @Override
     public void select() {
         connect();
-        try{
+        try {
             connect();
             connection.setAutoCommit(false);
-            ResultSet rs = statement.executeQuery( "SELECT * FROM Orders;" );
-            while ( rs.next() ) {
+            ResultSet rs = statement.executeQuery("SELECT * FROM Orders;");
+            while (rs.next()) {
                 int id = rs.getInt("Id_order");
-                int  idCustomer = rs.getInt("Id_customer");
-                String orderStatus  = rs.getString("Order_status");
+                int idCustomer = rs.getInt("Id_customer");
+                String orderStatus = rs.getString("Order_status");
                 Date paidAt = rs.getDate("Order_payAt");
                 Date createdAt = rs.getDate("Order_createdAt");
 
 
-                System.out.println( "Id_order = " + id );
-                System.out.println( "Id_customer = " + idCustomer );
-                System.out.println( "Order_status = " + orderStatus );
-                System.out.println( "Order_payAt = " + paidAt );
-                System.out.println( "Order_createdAt = " + createdAt );
+                System.out.println("Id_order = " + id);
+                System.out.println("Id_customer = " + idCustomer);
+                System.out.println("Order_status = " + orderStatus);
+                System.out.println("Order_payAt = " + paidAt);
+                System.out.println("Order_createdAt = " + createdAt);
                 System.out.println();
             }
             rs.close();
@@ -55,8 +55,8 @@ public class OrderDAO extends DataBaseDAO implements DAO {
 
             statement.close();
             connection.close();
-        } catch ( Exception e ) {
-            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
 
@@ -73,8 +73,8 @@ public class OrderDAO extends DataBaseDAO implements DAO {
 
             statement.close();
             connection.close();
-        } catch ( Exception e ) {
-            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
     }
@@ -92,9 +92,26 @@ public class OrderDAO extends DataBaseDAO implements DAO {
             statement.close();
             connection.commit();
             connection.close();
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
+    }
+
+    public void ordersWithStatuses() {  //conversion exception ??
+        try {
+            connect();
+            connection.setAutoCommit(false);
+            String sql = String.format("SELECT * FROM Orders" +
+                    "VALUES ('%d', '%s', '%t', %t');");
+            statement.executeUpdate(sql);
+            statement.close();
+            connection.commit();
+            connection.close();
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
     }
 }
+

@@ -171,14 +171,14 @@ public class ProductDAO extends DataBaseDAO implements DAO{
         try {
             connect();
             connection.setAutoCommit(false);
-            ResultSet resultSets = statement.executeQuery(String.format("SELECT Rating, Number_of_rates FROM Products where Name = '%s';", productName));
+            ResultSet resultSets = statement.executeQuery(String.format("SELECT * FROM Products where Name = '%s';", productName));
             while (resultSets.next()) {
                 rating = resultSets.getInt("Rating");
                 ratingNumber = resultSets.getInt("Number_of_rates");
             }
             int productRatingToSave = rating + productRating;
             ratingNumber ++;
-            String sql = String.format("UPDATE Categories set Rating = %d, Number_of_rates = %d where Name = '%s';", productRatingToSave, ratingNumber, productName);
+            String sql = String.format("UPDATE Products set Rating = %d, Number_of_rates = %d where Name = '%s';", productRatingToSave, ratingNumber, productName);
             statement.executeUpdate(sql);
             connection.commit();
 
@@ -213,13 +213,13 @@ public class ProductDAO extends DataBaseDAO implements DAO{
     }
 
     public Product getProduct(int id){
-        try{
+        try {
             connect();
             connection.setAutoCommit(false);
-            ResultSet rs = statement.executeQuery( String.format("SELECT * FROM Products WHERE Id_product='%d';", id));
-            while ( rs.next() ) {
-                String  name = rs.getString("Name");
-                String  description = rs.getString("Description");
+            ResultSet rs = statement.executeQuery(String.format("SELECT * FROM Products WHERE Id_product='%d';", id));
+            while (rs.next()) {
+                String name = rs.getString("Name");
+                String description = rs.getString("Description");
                 double price = rs.getFloat("Price");
                 int quantity = rs.getInt("Quantity");
                 int idCategory = rs.getInt("Id_category");
@@ -231,6 +231,23 @@ public class ProductDAO extends DataBaseDAO implements DAO{
 
                 return chosenProduct;
             }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+            return null;
+    }
+
+    public void feedbackStatistics() {
+        try{
+            connect();
+            connection.setAutoCommit(false);
+            ResultSet rs = statement.executeQuery( "SELECT Number_of_rates FROM Products;" );
+            while ( rs.next() ) {
+                int numberOfRates = rs.getInt("Number_of_rates");
+                System.out.println("Number_of_rates = " + numberOfRates);
+                System.out.println();
+            }
             rs.close();
             statement.close();
             connection.close();
@@ -238,7 +255,7 @@ public class ProductDAO extends DataBaseDAO implements DAO{
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+
     }
 }
 

@@ -77,7 +77,8 @@ public class UI {
                 + "6 - give a limited discount on some products\n"
                 + "7 - see the list of ongoing orders\n"
                 + "8 - see statistics of orders\n"
-                + "9 - deactivate product\n");
+                + "9 - deactivate product\n"
+                + "10 - see feedbac statistics\n");
     }
 }
 
