@@ -22,6 +22,8 @@ public class ProductDAO extends DataBaseDAO implements DAO{
                 int quantity = rs.getInt("Quantity");
                 int idCategory = rs.getInt("Id_category");
                 boolean isAvailable = rs.getBoolean("isAvailable");
+                int rating = rs.getInt("Rating");
+                int numberOfRates = rs.getInt("Number_of_rates");
 
                 System.out.println( "Id = " + id );
                 System.out.println( "Name = " + name );
@@ -30,6 +32,7 @@ public class ProductDAO extends DataBaseDAO implements DAO{
                 System.out.println( "Quantity = " + quantity );
                 System.out.println( "Id_category = " + idCategory );
                 System.out.println("isAvailable = " + isAvailable);
+                System.out.println("Rating = " + rating/numberOfRates);
                 System.out.println();
             }
             rs.close();
@@ -116,6 +119,8 @@ public class ProductDAO extends DataBaseDAO implements DAO{
                 int quantity = resultSets.getInt("Quantity");
                 int idCategory = resultSets.getInt("Id_category");
                 boolean isAvailable = resultSets.getBoolean("isAvailable");
+                int rating = resultSets.getInt("Rating");
+                int numberOfRates = resultSets.getInt("Number_of_rates");
 
                 System.out.println( "Id = " + id );
                 System.out.println( "Name = " + name );
@@ -124,6 +129,7 @@ public class ProductDAO extends DataBaseDAO implements DAO{
                 System.out.println( "Quantity in shop = " + quantity );
                 System.out.println( "Id_category = " + idCategory );
                 System.out.println("isAvailable = " + isAvailable);
+                System.out.println("Rating = " + rating/numberOfRates);
                 System.out.println();
             }
             resultSets.close();
@@ -143,6 +149,7 @@ public class ProductDAO extends DataBaseDAO implements DAO{
             while ( resultSets.next() ) {
                 int quantity = resultSets.getInt("Quantity");
                 boolean isAvailable = resultSets.getBoolean("isAvailable");
+
                 System.out.println( "Quantity in shop = " + quantity );
                 System.out.println("isAvailable = " + isAvailable);
                 System.out.println();
@@ -155,4 +162,29 @@ public class ProductDAO extends DataBaseDAO implements DAO{
             e.printStackTrace();
         }
     }
-}
+
+    public void updateRating(String productName, int productRating) {
+        int rating = 0;
+        int ratingNumber = 0;
+        try {
+            connect();
+            connection.setAutoCommit(false);
+            ResultSet resultSets = statement.executeQuery(String.format("SELECT Rating, Number_of_rates FROM Products where Name = %d;", productName));
+            while (resultSets.next()) {
+                rating = resultSets.getInt("Rating");
+                ratingNumber = resultSets.getInt("Numbers_of_rates");
+            }
+            int productRatingToSave = rating + productRating;
+            ratingNumber ++;
+            String sql = String.format("UPDATE Categories set Rating = %d, Number_of_rates = %d where Name = '%s';", productRatingToSave, ratingNumber, productName);
+            statement.executeUpdate(sql);
+            connection.commit();
+
+            statement.close();
+            connection.close();
+            } catch (Exception e) {
+                System.err.println(e.getClass().getName() + ": " + e.getMessage());
+                System.exit(0);
+            }
+        }
+    }

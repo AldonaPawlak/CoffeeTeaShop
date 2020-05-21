@@ -8,7 +8,6 @@ public class Product {
     private int quantity;
     private final int categoryId;
     private final Boolean isAvailable;
-    private int rate = 0;
 
 
     public Product(int id, String name, float price, int quantity, int categoryId, Boolean isAvailable) {
@@ -46,13 +45,5 @@ public class Product {
 
     public Boolean getAvailable() {
         return isAvailable;
-    }
-
-    public int getRate() {
-        return rate;
-    }
-
-    public void setRate(int rate) {
-        this.rate = rate;
     }
 }
