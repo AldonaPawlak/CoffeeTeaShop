@@ -9,11 +9,12 @@ public class AdminMenuController {
     UI ui = new UI();
     Input input = new Input();
 
-    public void adminOptions() {
+    public void adminOptions() { // shoud be used in case someone will register as admin
         ui.printAdminMenu();
         final int adminChoice = input.getIntegerInput("What do you want to do right now?");
         switch (adminChoice) {
             case 1: {
+                //tu dac wywolanie odpowiedniej funkcji
                 break;
             }
         }
