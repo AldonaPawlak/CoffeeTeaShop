@@ -54,4 +54,10 @@ public class AdminMenuController {
         }
     }
 
+    private void deactivateProduct() {
+        ui.print("DEACTIVATING PRODUCT");
+        productDAO.update();
+    }
+
 }
+
