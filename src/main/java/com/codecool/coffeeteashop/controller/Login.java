@@ -17,7 +17,8 @@ public class Login {
         user = userDao.selectUser();
         if (user == null) {
             System.out.println("You have to register first\n\n");
-            userDao.insertInto();
+            return;
+//            userDao.insertInto();
         }
         if (user.getRights().matches("customer")) {
             System.out.println("\nYou might do shopping");

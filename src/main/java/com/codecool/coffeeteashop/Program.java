@@ -21,24 +21,30 @@ public class Program {
 
     public void runProgram() throws IOException {
         ui.printMenu();
-        int userOption = input.getIntegerInput("Enter option: ");
-        switch (userOption){
-            case 1: {
-                Login login = new Login();
-                login.loginToDb();
-                break;}
-            case 2: {
-                ui.print("Registration");
-                Registration registration = new Registration(userDAO);
-                registration.register();
-                break;}
-            case 0: {
-                ui.print("Thank you for visiting our shop.\n");
-                break; }
-            default: {
-                ui.print("Wrong option");
-                runProgram();
-                break; }
+        int userOption = input.getNumericInput("Enter option: ", 0, 2);
+        while (userOption != 0) {
+            switch (userOption) {
+                case 1: {
+                    Login login = new Login();
+                    login.loginToDb();
+                    break;
+                }
+                case 2: {
+                    ui.print("Registration");
+                    Registration registration = new Registration(userDAO);
+                    registration.register();
+                    break;
+                }
+                case 0: {
+                    ui.print("Thank you for visiting our shop.\n");
+                    break;
+                }
+                default: {
+                    ui.print("Wrong option");
+                    runProgram();
+                    break;
+                }
+            }
         }
     }
 }
