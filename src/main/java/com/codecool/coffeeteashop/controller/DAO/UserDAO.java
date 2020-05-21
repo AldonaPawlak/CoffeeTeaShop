@@ -3,6 +3,7 @@ package com.codecool.coffeeteashop.controller.DAO;
 import com.codecool.coffeeteashop.model.User;
 import com.codecool.coffeeteashop.view.Input;
 
+import java.io.IOException;
 import java.sql.*;
 
 public class UserDAO<Person> extends DataBaseDAO implements DAO{
@@ -80,7 +81,7 @@ public class UserDAO<Person> extends DataBaseDAO implements DAO{
     }
 
     @Override
-    public void insertInto() {
+    public void insertInto() throws IOException {
         String name = input.getStringInput("Enter name: ");
         String surname = input.getStringInput("Enter surname: ");
         String email = input.getStringInput("Enter email: ");
@@ -102,7 +103,7 @@ public class UserDAO<Person> extends DataBaseDAO implements DAO{
         }
     }
 
-    public User selectUser(){
+    public User selectUser() throws IOException {
         String userEmail = input.getStringInput("Enter your email: ");
         String userPassword = input.getStringInput("Enter your password: ");
         connect();
