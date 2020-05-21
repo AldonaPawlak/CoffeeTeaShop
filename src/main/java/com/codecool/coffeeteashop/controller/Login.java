@@ -10,20 +10,23 @@ public class Login {
     private Input input = new Input();
     private User user;
 
-    public void loginToDb(){
+    public void loginToDb() {
 
         UserDAO userDao = new UserDAO();
-        user =  userDao.selectUser();
-        if (user == null){
+        user = userDao.selectUser();
+        if (user == null) {
             System.out.println("You have to register first\n\n");
-
             userDao.insertInto();
 
         }
-        else {
+        if (user.getRights().matches("customer")) {
             System.out.println("\nYou might do shopping");
             CustomerMenuController customerMenuController = new CustomerMenuController();
-            customerMenuController.userOptions();
+            customerMenuController.userOptions();}
+            if (user.getRights().matches("admin")) {
+                AdminMenuController adminMenuController = new AdminMenuController();
+                adminMenuController.adminOptions();
+            }
         }
     }
-}
+
