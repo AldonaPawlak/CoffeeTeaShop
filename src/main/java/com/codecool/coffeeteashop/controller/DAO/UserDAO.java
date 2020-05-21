@@ -84,7 +84,7 @@ public class UserDAO<Person> extends DataBaseDAO implements DAO{
     public void insertInto() {
         String name = input.getStringInput("Enter name: ");
         String surname = input.getStringInput("Enter surname: ");
-        String email = input.getStringInput("Enter emai: ");
+        String email = input.getStringInput("Enter email: ");
         String password = input.getStringInput("Enter password: ");
         int phone = input.getNumericInput("Enter phone number: ", 0, 999999999);
         String rights = "customer";

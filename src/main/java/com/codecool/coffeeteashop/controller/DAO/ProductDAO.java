@@ -59,7 +59,22 @@ public class ProductDAO extends DataBaseDAO implements DAO{
 
     @Override
     public void delete() {
+        final Integer idCategory = input.getIntegerInput("Type Category ID: ");
+        final Integer idProduct = input.getIntegerInput("Type product ID: ");
+        try {
+            connect();
+            connection.setAutoCommit(false);
+            String sql = String.format("DELETE FROM Products WHERE Id_category = '%d' AND Id_product = '%d'", idCategory, idProduct +
+                    "VALUES ('Id_category', 'Id_product')", idCategory, idProduct);
+            statement.executeUpdate(sql);
+            connection.commit();
 
+            statement.close();
+            connection.close();
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
     }
 
     @Override

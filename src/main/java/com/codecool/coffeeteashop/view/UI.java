@@ -60,11 +60,12 @@ public class UI {
     }
 
     public void printBasketContent() {
-        //TODO
+        System.out.println("Choose 1 to print basket content");
     }
 
     public void printAdminMenu() {
         System.out.println("Admin menu:\n"
+
                 + "1 - create new product category\n"
                 + "2 - change product category name\n"
                 + "3 - deactivate product\n" //it shoud be automaticly if quantity = 0 also

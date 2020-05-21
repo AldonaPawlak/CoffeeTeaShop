@@ -16,7 +16,29 @@ public class AdminMenuController {
         final int adminChoice = input.getIntegerInput("What do you want to do right now?");
         switch (adminChoice) {
             case 1: {
-                //tu dac wywolanie odpowiedniej funkcji
+                addNewProductCategory();
+                break;
+            }
+            case 2: {
+                break;
+            }
+            case 3: {
+                productDAO.delete();
+                break;
+            }
+            case 4: {
+                break;
+            }
+            case 5: {
+                break;
+            }
+            case 6: {
+                break;
+            }
+            case 7: {
+                break;
+            }
+            case 8: {
                 break;
             }
         }
