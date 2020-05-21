@@ -1,3 +1,4 @@
+
 package com.codecool.coffeeteashop.controller;
 
 import com.codecool.coffeeteashop.controller.DAO.ProductDAO;
@@ -9,6 +10,7 @@ import java.io.IOException;
 public class CustomerMenuController {
     UI ui = new UI();
     Input input = new Input();
+    ProductDAO productDAO = new ProductDAO();
 
     public CustomerMenuController() {
     }
@@ -18,7 +20,7 @@ public class CustomerMenuController {
         final int userChoice = input.getIntegerInput("What do you want to do right now?\n");
         switch (userChoice) {
             case 1 : {
-
+                //checkAvailibilityOfProduct(); call in other place
                 break;
             }
             case 2 : {
@@ -35,6 +37,10 @@ public class CustomerMenuController {
             }
             case 5 : {
 
+                break;
+            }
+            case 6 : {
+                getProductsWithRates();
                 break;
             }
         }
@@ -78,12 +84,16 @@ public class CustomerMenuController {
         if (productName.equalsIgnoreCase("Arabica")) {
             return 1;
         }
-        else if (productName.equalsIgnoreCase("Robutsa")) {
+        else if (productName.equalsIgnoreCase("Robusta")) {
             return 2;
         }
         else if (productName.equalsIgnoreCase("Liberika")) {
             return 3;
         }
         return 0;
+    }
+
+    private void getProductsWithRates() {
+        productDAO.selectAllProductsWithRates();
     }
 }
