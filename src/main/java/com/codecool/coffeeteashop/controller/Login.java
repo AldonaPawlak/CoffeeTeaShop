@@ -22,6 +22,8 @@ public class Login {
         }
         else {
             System.out.println("\nYou might do shopping");
+            CustomerMenuController customerMenuController = new CustomerMenuController();
+            customerMenuController.userOptions();
         }
     }
 }
