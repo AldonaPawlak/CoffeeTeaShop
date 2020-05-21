@@ -13,5 +13,14 @@ public class CustomerMenuController {
     public void userOptions() {
         ui.printUserMenu();
         final int userChoice = input.getIntegerInput("What do you want to do right now?");
+        switch (userChoice) {
+            case 1: {
+                break;
+            }
+            case 2: {
+                break;
+            }
+        }
     }
+
 }
