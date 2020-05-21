@@ -17,7 +17,23 @@ public class CustomerMenuController {
         ui.printUserMenu();
         final int userChoice = input.getIntegerInput("What do you want to do right now?\n");
         switch (userChoice) {
-            case 1: {
+            case 1 : {
+
+                break;
+            }
+            case 2 : {
+                showSpecificCategory();
+                break;
+            }
+            case 3 : {
+
+                break;
+            }
+            case 4 : {
+
+                break;
+            }
+            case 5 : {
 
                 break;
             }
