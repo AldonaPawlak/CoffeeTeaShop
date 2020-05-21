@@ -15,8 +15,8 @@ public class Login {
         UserDAO userDao = new UserDAO();
         user =  userDao.selectUser();
         if (user == null){
-            System.out.println("You have to register first\n");
-            input.getEmptyInput();
+            System.out.println("You have to register first\n\n");
+
             userDao.insertInto();
 
         }

@@ -15,7 +15,6 @@ import java.util.Arrays;
 public class Program {
     private Input input = new Input();
     private UI ui = new UI();
-    private MenuController menuController;
     private UserDAO userDAO = new UserDAO();
     private ProductDAO productDAO = new ProductDAO();
     private ProductCategoryDAO productCategoryDAO = new ProductCategoryDAO();
@@ -26,16 +25,12 @@ public class Program {
         int userOption = input.getIntegerInput("Enter option: ");
         switch (userOption){
             case 1:
-                ui.print("Login");
                 Login login = new Login();
                 login.loginToDb();
                 break;
             case 2:
                 ui.print("Registration");
-
                 Registration registration = new Registration(userDAO);
-
-//                Registration registration = new Registration();
                 registration.register();
                 break;
             case 0:
