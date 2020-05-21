@@ -1,10 +1,18 @@
 package com.codecool.coffeeteashop.controller.DAO;
 
+import com.codecool.coffeeteashop.model.User;
+
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class OrderDAO extends DataBaseDAO implements DAO {
+    private User user;
+
+    public OrderDAO(User user){
+        this.user = user;
+    }
+
     @Override
     public void select() {
         connect();
@@ -73,12 +81,12 @@ public class OrderDAO extends DataBaseDAO implements DAO {
 
     @Override
     public void insertInto() {
-        String rights = "admin";
+
         try {
             connect();
             connection.setAutoCommit(false);
-            String sql = String.format("INSERT INTO Orders (Id_order,Id_Customer,Order_status,Order_payAt,Order_createdAt) " +
-                    "VALUES ('%d', '%d', '%s', '%t', %t',);", 3, 3, "paid", 20122020, 21122020);
+            String sql = String.format("INSERT INTO Orders (Id_Customer,Order_status,Order_payAt,Order_createdAt) " +
+                    "VALUES ('%d', '%s', '%t', %t',);", user.getId(), "paid", 20122020, 21122020);
             statement.executeUpdate(sql);
 
             statement.close();
