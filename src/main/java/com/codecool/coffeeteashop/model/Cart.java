@@ -1,13 +1,14 @@
 package com.codecool.coffeeteashop.model;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public class Cart {
     private Integer id;
-    private Map<Product, Integer> products;
+    private ArrayList<Product> products;
     Product product;
 
-    public Cart(int id, Map<Product, Integer> products) {
+    public Cart(int id, ArrayList<Product> products) {
         this.id = id;
         this.products = products;
     }
@@ -16,7 +17,7 @@ public class Cart {
         return id;
     }
 
-    public Map<Product, Integer> products() {
+    public ArrayList<Product> products() {
         return products;
     }
 
