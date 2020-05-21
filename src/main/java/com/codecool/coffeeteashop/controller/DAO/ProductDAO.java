@@ -173,7 +173,7 @@ public class ProductDAO extends DataBaseDAO implements DAO{
             ResultSet resultSets = statement.executeQuery(String.format("SELECT Rating, Number_of_rates FROM Products where Name = '%s';", productName));
             while (resultSets.next()) {
                 rating = resultSets.getInt("Rating");
-                ratingNumber = resultSets.getInt("Numbers_of_rates");
+                ratingNumber = resultSets.getInt("Number_of_rates");
             }
             int productRatingToSave = rating + productRating;
             ratingNumber ++;
