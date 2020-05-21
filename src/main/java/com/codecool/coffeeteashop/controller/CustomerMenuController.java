@@ -1,6 +1,7 @@
 
 package com.codecool.coffeeteashop.controller;
 
+import com.codecool.coffeeteashop.controller.DAO.ProductCategoryDAO;
 import com.codecool.coffeeteashop.controller.DAO.ProductDAO;
 import com.codecool.coffeeteashop.view.Input;
 import com.codecool.coffeeteashop.view.UI;
@@ -11,43 +12,54 @@ public class CustomerMenuController {
     UI ui = new UI();
     Input input = new Input();
     ProductDAO productDAO = new ProductDAO();
+    ProductCategoryDAO productCategoryDAO = new ProductCategoryDAO();
 
     public CustomerMenuController() {
     }
 
     public void userOptions() throws IOException {
-        ui.printUserMenu();
-        final int userChoice = input.getIntegerInput("What do you want to do right now?\n");
-        switch (userChoice) {
-            case 1 : {
-                //checkAvailibilityOfProduct(); call in other place
-                productDAO.updateRating("Arabica", 4);
-                break;
-            }
-            case 2 : {
-                showSpecificCategory();
-                break;
-            }
-            case 3 : {
 
-                break;
+        boolean isRunning  = true;
+        while (isRunning) {
+            ui.printUserMenu();
+            int userChoice = input.getIntegerInput("What do you want to do right now?\n");
+            if(userChoice == 0) {
+                isRunning = false;
             }
-            case 4 : {
+            switch (userChoice) {
+                case 1: {
+                    productDAO.select();
+                    input.getEmptyInput();
+                    //checkAvailibilityOfProduct(); call in other place
+//                productDAO.updateRating("Arabica", 4);
+                    break;
+                }
+                case 2: {
+                    showSpecificCategory();
+                    break;
+                }
+                case 3: {
 
-                break;
-            }
-            case 5 : {
+                    break;
+                }
+                case 4: {
 
-                break;
-            }
-            case 6 : {
-                getProductsWithRates();
-                break;
+                    break;
+                }
+                case 5: {
+
+                    break;
+                }
+                case 6: {
+                    getProductsWithRates();
+                    break;
+                }
             }
         }
     }
 
     private void showSpecificCategory() throws IOException {
+        productCategoryDAO.select();
         String category = input.getStringInput("Which category you want to show?\n").toLowerCase();
         int categoryId = getCategoryId(category);
         ProductDAO productDAO = new ProductDAO();

@@ -21,12 +21,17 @@ public class Program {
 
     public void runProgram() throws IOException {
         ui.printMenu();
-        int userOption = input.getNumericInput("Enter option: ", 0, 3);
-        while (true) {
+        boolean isRunning = true;
+        while (isRunning) {
+            int userOption = input.getNumericInput("Enter option: ", 0, 3);
+            if(userOption == 0) {
+                isRunning = false;
+            }
             switch (userOption) {
                 case 1: {
                     Login login = new Login();
                     login.loginToDb(this);
+                    isRunning = false;
                     break;
                 }
                 case 2: {
@@ -38,7 +43,6 @@ public class Program {
                 }
                 case 0: {
                     ui.print("\nThank you for visiting our shop.\n");
-                    exitProgram();
                     break;
                 }
                 default: {
@@ -50,7 +54,4 @@ public class Program {
         }
     }
 
-    private void exitProgram() {
-        System.exit(0);
-    }
 }

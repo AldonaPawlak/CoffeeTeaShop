@@ -43,7 +43,8 @@ public class UI {
                 + "3 - Show quantity of my basket\n"
                 + "4 - Show my previous orders\n"
                 + "5 - Show statistics of my orders\n"
-                + "6 - Show all products with rates\n");
+                + "6 - Show all products with rates\n"
+                + "0 - Back to previous menu\n");
     }
 
     public void printProductMenu() {

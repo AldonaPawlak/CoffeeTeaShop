@@ -24,10 +24,12 @@ public class Login {
             System.out.println("\nYou might do shopping");
             CustomerMenuController customerMenuController = new CustomerMenuController();
             customerMenuController.userOptions();
+            program.runProgram();
         }
         if (user.getRights().matches("admin")) {
             AdminMenuController adminMenuController = new AdminMenuController();
             adminMenuController.adminOptions();
+            program.runProgram();
         }
     }
 }
