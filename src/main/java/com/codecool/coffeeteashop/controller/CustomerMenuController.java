@@ -4,6 +4,8 @@ import com.codecool.coffeeteashop.controller.DAO.ProductDAO;
 import com.codecool.coffeeteashop.view.Input;
 import com.codecool.coffeeteashop.view.UI;
 
+import java.io.IOException;
+
 public class CustomerMenuController {
     UI ui = new UI();
     Input input = new Input();
@@ -11,7 +13,7 @@ public class CustomerMenuController {
     public CustomerMenuController() {
     }
 
-    public void userOptions() {
+    public void userOptions() throws IOException {
         ui.printUserMenu();
         final int userChoice = input.getIntegerInput("What do you want to do right now?\n");
         switch (userChoice) {
@@ -22,7 +24,7 @@ public class CustomerMenuController {
         }
     }
 
-    private void showSpecificCategory(){
+    private void showSpecificCategory() throws IOException {
         String category = input.getStringInput("Which category you want to show?\n").toLowerCase();
         int categoryId = getCategoryId(category);
         ProductDAO productDAO = new ProductDAO();

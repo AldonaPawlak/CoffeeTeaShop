@@ -9,6 +9,8 @@ import com.codecool.coffeeteashop.controller.Registration;
 import com.codecool.coffeeteashop.view.Input;
 import com.codecool.coffeeteashop.view.UI;
 
+import java.io.IOException;
+
 public class Program {
     private Input input = new Input();
     private UI ui = new UI();
@@ -17,7 +19,7 @@ public class Program {
     private ProductCategoryDAO productCategoryDAO = new ProductCategoryDAO();
     private AdminMenuController adminMenuController = new AdminMenuController();
 
-    public void runProgram() {
+    public void runProgram() throws IOException {
         ui.printMenu();
         int userOption = input.getIntegerInput("Enter option: ");
         switch (userOption){

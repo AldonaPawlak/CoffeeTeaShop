@@ -3,6 +3,7 @@ package com.codecool.coffeeteashop.controller.DAO;
 
 import com.codecool.coffeeteashop.view.Input;
 
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,7 +39,7 @@ public class ProductCategoryDAO extends DataBaseDAO implements DAO{
     }
 
     @Override
-    public void update() {
+    public void update() throws IOException {
 
         String newValue = input.getStringInput("Enter new value of the product category: ");
         int idCategory = input.getIntegerInput("Enter id of product category to edit: ");
@@ -74,7 +75,7 @@ public class ProductCategoryDAO extends DataBaseDAO implements DAO{
     }
 
     @Override
-    public void insertInto() {
+    public void insertInto() throws IOException {
         String name = input.getStringInput("Enter new name of the category: ");
         String description = input.getStringInput("Enter description: ");
         try {

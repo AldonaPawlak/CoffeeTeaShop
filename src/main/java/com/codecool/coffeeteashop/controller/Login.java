@@ -4,13 +4,15 @@ import com.codecool.coffeeteashop.controller.DAO.UserDAO;
 import com.codecool.coffeeteashop.model.User;
 import com.codecool.coffeeteashop.view.Input;
 
+import java.io.IOException;
+
 public class Login {
 
 
     private Input input = new Input();
     private User user;
 
-    public void loginToDb() {
+    public void loginToDb() throws IOException {
         UserDAO userDao = new UserDAO();
         user = userDao.selectUser();
         if (user == null) {

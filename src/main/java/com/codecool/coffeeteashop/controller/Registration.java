@@ -2,6 +2,8 @@ package com.codecool.coffeeteashop.controller;
 
 import com.codecool.coffeeteashop.controller.DAO.UserDAO;
 
+import java.io.IOException;
+
 public class Registration {
 
 
@@ -11,7 +13,7 @@ public class Registration {
         this.userDao = userDao;
     }
 
-    public void register(){
+    public void register() throws IOException {
         userDao.insertInto();
     }
 

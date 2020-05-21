@@ -6,13 +6,15 @@ import com.codecool.coffeeteashop.controller.DAO.ProductDAO;
 import com.codecool.coffeeteashop.view.Input;
 import com.codecool.coffeeteashop.view.UI;
 
+import java.io.IOException;
+
 public class AdminMenuController {
     ProductCategoryDAO productCategoryDAO = new ProductCategoryDAO();
     ProductDAO productDAO = new ProductDAO();
     UI ui = new UI();
     Input input = new Input();
 
-    public void adminOptions() { // should be used in case someone will register as admin
+    public void adminOptions() throws IOException { // should be used in case someone will register as admin
         ui.printAdminMenu();
         final int adminChoice = input.getIntegerInput("What do you want to do right now?");
         switch (adminChoice) {

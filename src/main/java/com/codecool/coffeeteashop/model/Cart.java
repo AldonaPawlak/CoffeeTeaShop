@@ -5,6 +5,7 @@ import com.codecool.coffeeteashop.controller.DAO.ProductDAO;
 import com.codecool.coffeeteashop.view.Input;
 import com.codecool.coffeeteashop.view.UI;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +37,7 @@ public class Cart {
         products.add(product);
     }
 
-    public void editCart() {
+    public void editCart() throws IOException {
         ui.printUserBasketMenu();
         int option = input.getIntegerInput("Enter option: ");
         switch (option){
@@ -65,7 +66,7 @@ public class Cart {
             products.clear();
     }
 
-    public void changeQuantityOfProduct(){
+    public void changeQuantityOfProduct() throws IOException {
         String productName = input.getStringInput("Enter name of the product to edit: ");
         int quantity = input.getIntegerInput("Enter quantity of product: ");
         for (Product product : products){
@@ -75,7 +76,7 @@ public class Cart {
         }
     }
 
-    public void removeFromCart() {
+    public void removeFromCart() throws IOException {
         String productNameToDelete = input.getStringInput("Enter name of the product to delete: ");
         products.removeIf(productToDelete -> product.getName().equals(productNameToDelete));
     }
