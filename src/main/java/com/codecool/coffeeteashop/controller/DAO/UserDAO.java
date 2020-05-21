@@ -103,6 +103,7 @@ public class UserDAO<Person> extends DataBaseDAO implements DAO{
             System.exit(0);
         }
     }
+
     public User selectUser(){
 
         String userEmail = input.getStringInput("Enter your email: ");
