@@ -12,13 +12,15 @@ import java.util.Map;
 public class Cart {
     private UI ui = new UI();
     private Input input = new Input();
+    private User user;
     private Integer id;
     private List<Product> products = new ArrayList<Product>();
     Product product;
     ProductDAO productDAO = new ProductDAO();
 
-    public Cart(int id, ArrayList<Product> products) {
+    public Cart(int id, ArrayList<Product> products, User user) {
         this.id = id;
+        this.user = user;
         this.products = products;
     }
 
@@ -50,7 +52,7 @@ public class Cart {
                 break;
             case 3:
                 ui.print("Your order have been placed");
-                OrderDAO orderDAO = new OrderDAO();
+                OrderDAO orderDAO = new OrderDAO(user);
                 orderDAO.insertInto();
                 break;
             default:
