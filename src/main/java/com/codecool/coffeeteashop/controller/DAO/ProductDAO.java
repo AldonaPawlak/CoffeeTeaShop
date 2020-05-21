@@ -170,14 +170,14 @@ public class ProductDAO extends DataBaseDAO implements DAO{
         try {
             connect();
             connection.setAutoCommit(false);
-            ResultSet resultSets = statement.executeQuery(String.format("SELECT Rating, Number_of_rates FROM Products where Name = '%s';", productName));
+            ResultSet resultSets = statement.executeQuery(String.format("SELECT * FROM Products where Name = '%s';", productName));
             while (resultSets.next()) {
                 rating = resultSets.getInt("Rating");
                 ratingNumber = resultSets.getInt("Number_of_rates");
             }
             int productRatingToSave = rating + productRating;
             ratingNumber ++;
-            String sql = String.format("UPDATE Categories set Rating = %d, Number_of_rates = %d where Name = '%s';", productRatingToSave, ratingNumber, productName);
+            String sql = String.format("UPDATE Products set Rating = %d, Number_of_rates = %d where Name = '%s';", productRatingToSave, ratingNumber, productName);
             statement.executeUpdate(sql);
             connection.commit();
 
@@ -210,5 +210,24 @@ public class ProductDAO extends DataBaseDAO implements DAO{
             e.printStackTrace();
         }
     }
+
+    public void feedbackStatistics() {
+        try{
+            connect();
+            connection.setAutoCommit(false);
+            ResultSet rs = statement.executeQuery( "SELECT Number_of_rates FROM Products;" );
+            while ( rs.next() ) {
+                int numberOfRates = rs.getInt("Number_of_rates");
+                System.out.println("Number_of_rates = " + numberOfRates);
+                System.out.println();
+            }
+            rs.close();
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
 
