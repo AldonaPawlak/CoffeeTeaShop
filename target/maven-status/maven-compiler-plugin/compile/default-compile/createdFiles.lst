@@ -1,9 +1,8 @@
 com/codecool/coffeeteashop/model/Customer.class
 com/codecool/coffeeteashop/controller/DAO/ProductCategoryDAO.class
-com/codecool/coffeeteashop/view/UI.class
 com/codecool/coffeeteashop/model/Product.class
+com/codecool/coffeeteashop/view/UI.class
 com/codecool/coffeeteashop/view/Input.class
-com/codecool/coffeeteashop/controller/MenuController.class
 com/codecool/coffeeteashop/controller/DAO/DataBaseDAO.class
 com/codecool/coffeeteashop/model/Cart.class
 com/codecool/coffeeteashop/controller/Registration.class

@@ -143,8 +143,9 @@ public class ProductDAO extends DataBaseDAO implements DAO{
             while ( resultSets.next() ) {
                 int quantity = resultSets.getInt("Quantity");
                 boolean isAvailable = resultSets.getBoolean("isAvailable");
+                String avalibility = isAvailable == true ? "available" : "not available";
                 System.out.println( "Quantity in shop = " + quantity );
-                System.out.println("isAvailable = " + isAvailable);
+                System.out.println("isAvailable = " + avalibility);
                 System.out.println();
             }
             resultSets.close();
