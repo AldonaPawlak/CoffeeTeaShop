@@ -21,6 +21,7 @@ public class CustomerMenuController {
         switch (userChoice) {
             case 1 : {
                 //checkAvailibilityOfProduct(); call in other place
+                productDAO.updateRating("Coffee", 4);
                 break;
             }
             case 2 : {
