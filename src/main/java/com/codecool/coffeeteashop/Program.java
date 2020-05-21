@@ -21,21 +21,22 @@ public class Program {
         ui.printMenu();
         int userOption = input.getIntegerInput("Enter option: ");
         switch (userOption){
-            case 1:
+            case 1: {
                 Login login = new Login();
                 login.loginToDb();
-                break;
-            case 2:
+                break;}
+            case 2: {
                 ui.print("Registration");
                 Registration registration = new Registration(userDAO);
                 registration.register();
-                break;
-            case 0:
-                break;
-            default:
+                break;}
+            case 0: {
+                ui.print("Thank you for visiting our shop.\n");
+                break; }
+            default: {
                 ui.print("Wrong option");
                 runProgram();
-                break;
+                break; }
         }
     }
 }

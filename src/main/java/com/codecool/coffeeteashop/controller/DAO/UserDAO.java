@@ -71,7 +71,6 @@ public class UserDAO<Person> extends DataBaseDAO implements DAO{
             String sql = "DELETE from Users where Id_user = 2;";
             statement.executeUpdate(sql);
             connection.commit();
-
             statement.close();
             connection.close();
         } catch ( Exception e ) {
@@ -94,7 +93,6 @@ public class UserDAO<Person> extends DataBaseDAO implements DAO{
             String sql = String.format("INSERT INTO Users (Name,Surname,mail,Password,Phone,rights) " +
                     "VALUES ('%s', '%s', '%s', '%s', %d,'%s');", name, surname, email, password, phone, rights);
             statement.executeUpdate(sql);
-
             statement.close();
             connection.commit();
             connection.close();
@@ -105,7 +103,6 @@ public class UserDAO<Person> extends DataBaseDAO implements DAO{
     }
 
     public User selectUser(){
-
         String userEmail = input.getStringInput("Enter your email: ");
         String userPassword = input.getStringInput("Enter your password: ");
         connect();
@@ -126,12 +123,10 @@ public class UserDAO<Person> extends DataBaseDAO implements DAO{
                     User user = new User(id, name, surname, mail, password, phone, rights);
                     return user;
                 }
-
             }
             rs.close();
             statement.close();
             connection.close();
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
