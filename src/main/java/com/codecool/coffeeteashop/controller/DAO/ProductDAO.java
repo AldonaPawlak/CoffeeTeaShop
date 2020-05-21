@@ -143,11 +143,33 @@ public class ProductDAO extends DataBaseDAO implements DAO{
             while ( resultSets.next() ) {
                 int quantity = resultSets.getInt("Quantity");
                 boolean isAvailable = resultSets.getBoolean("isAvailable");
+                String avalibility = isAvailable == true ? "available" : "not available";
                 System.out.println( "Quantity in shop = " + quantity );
-                System.out.println("isAvailable = " + isAvailable);
+                System.out.println("isAvailable = " + avalibility);
                 System.out.println();
             }
             resultSets.close();
+            statement.close();
+            connection.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void selectAllProductsWithRates() {
+        try{
+            connect();
+            connection.setAutoCommit(false);
+            ResultSet rs = statement.executeQuery( "SELECT Name, Rating FROM Products;" );
+            while ( rs.next() ) {
+                String  name = rs.getString("Name");
+                int  rating = rs.getInt("Rating");
+
+                System.out.println( "Name = " + name );
+                System.out.println( "Rating = " + rating );
+            }
+            rs.close();
             statement.close();
             connection.close();
 

@@ -42,7 +42,8 @@ public class UI {
                 + "2 - Choose category of products to show\n"
                 + "3 - Show quantity of my basket\n"
                 + "4 - Show my previous orders\n"
-                + "5 - Show statistics of my orders\n");
+                + "5 - Show statistics of my orders\n"
+                + "6 - Show all products with rates\n");
     }
 
     public void printProductMenu() {
