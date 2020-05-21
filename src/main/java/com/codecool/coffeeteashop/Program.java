@@ -1,5 +1,6 @@
 package com.codecool.coffeeteashop;
 
+import com.codecool.coffeeteashop.controller.AdminMenuController;
 import com.codecool.coffeeteashop.controller.DAO.ProductCategoryDAO;
 import com.codecool.coffeeteashop.controller.DAO.ProductDAO;
 import com.codecool.coffeeteashop.controller.DAO.UserDAO;
@@ -18,6 +19,7 @@ public class Program {
     private UserDAO userDAO = new UserDAO();
     private ProductDAO productDAO = new ProductDAO();
     private ProductCategoryDAO productCategoryDAO = new ProductCategoryDAO();
+    private AdminMenuController adminMenuController = new AdminMenuController();
 
     public void runProgram() {
         ui.printMenu();

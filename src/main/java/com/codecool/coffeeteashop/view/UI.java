@@ -28,25 +28,28 @@ public class UI {
 
     public void printMenu() {
         System.out.println("menu:\n"
-                         + "1 - log in\n"
-                         + "2 - registration\n"
-                         + "0 - EXIT\n");
+
+                + "1 - log in\n"
+                + "2 - registration\n"
+                + "0 - EXIT\n");
+
     }
 
     public void printUserMenu() {
         System.out.println("Menu:\n"
-                          + "1 - Show all products:\n"
-                          + "2 - Choose category of products to show"
-                          + "3 - Show quantity of my basket\n"
-                          + "4 - Show my previous orders\n"
-                          + "5 - Show statistics of my orders\n");
+
+                + "1 - Show all products:\n"
+                + "2 - Choose category of products to show"
+                + "3 - Show quantity of my basket\n"
+                + "4 - Show my previous orders\n"
+                + "5 - Show statistics of my orders\n");
     }
 
     public void printProductMenu() {
         System.out.println("Product menu:\n"
-                         + "1 - add product\n"
-                         + "2 - rate product (1-5)\n"
-                         + "3 - show availability\n");
+                + "1 - add product\n"
+                + "2 - rate product (1-5)\n"
+                + "3 - show availability\n");
     }
 
     public void printUserBasketMenu() {
@@ -57,20 +60,20 @@ public class UI {
     }
 
     public void printBasketContent() {
-        //TODO
+        System.out.println("Choose 1 to print basket content");
     }
 
     public void printAdminMenu() {
         System.out.println("Admin menu:\n"
-                          + "1 - create new product category\n"
-                          + "2 - change product category name\n"
-                          + "3 - deactivate product\n" //it shoud be automaticly if quantity = 0 also
-                          + "4 - add new product\n"
-                          + "5 - edit product\n"
-                          + "6 - give a limited discount on some products\n"
-                          + "7 - see the list of ongoing orders\n"
-                          + "8 - see statistics of orders\n");
+
+                + "1 - create new product category\n"
+                + "2 - change product category name\n"
+                + "3 - deactivate product\n" //it shoud be automaticly if quantity = 0 also
+                + "4 - add new product\n"
+                + "5 - edit product\n"
+                + "6 - give a limited discount on some products\n"
+                + "7 - see the list of ongoing orders\n"
+                + "8 - see statistics of orders\n");
     }
-
-
 }
+
