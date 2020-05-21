@@ -1,5 +1,6 @@
 package com.codecool.coffeeteashop.model;
 
+import com.codecool.coffeeteashop.controller.DAO.OrderDAO;
 import com.codecool.coffeeteashop.controller.DAO.ProductDAO;
 import com.codecool.coffeeteashop.view.Input;
 import com.codecool.coffeeteashop.view.UI;
@@ -49,6 +50,8 @@ public class Cart {
                 break;
             case 3:
                 ui.print("Your order have been placed");
+                OrderDAO orderDAO = new OrderDAO();
+                orderDAO.insertInto();
                 break;
             default:
                 ui.print("Wrong option!");
