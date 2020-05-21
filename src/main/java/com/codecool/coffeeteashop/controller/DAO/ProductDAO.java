@@ -101,4 +101,36 @@ public class ProductDAO extends DataBaseDAO implements DAO{
             System.exit(0);
         }
     }
+
+    public void selectSpecificCategory(int categoryId){
+        try{
+            connect();
+            connection.setAutoCommit(false);
+            ResultSet resultSets = statement.executeQuery( String.format("SELECT * FROM Products where Id_category = %d;", categoryId ));
+            while ( resultSets.next() ) {
+                int id = resultSets.getInt("id_product");
+                String  name = resultSets.getString("Name");
+                String  description = resultSets.getString("Description");
+                double price = resultSets.getFloat("Price");
+                int quantity = resultSets.getInt("Quantity");
+                int idCategory = resultSets.getInt("Id_category");
+                boolean isAvailable = resultSets.getBoolean("isAvailable");
+
+                System.out.println( "Id = " + id );
+                System.out.println( "Name = " + name );
+                System.out.println( "Description = " + description );
+                System.out.println( "Price = " + price );
+                System.out.println( "Quantity in shop = " + quantity );
+                System.out.println( "Id_category = " + idCategory );
+                System.out.println("isAvailable = " + isAvailable);
+                System.out.println();
+            }
+            resultSets.close();
+            statement.close();
+            connection.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
