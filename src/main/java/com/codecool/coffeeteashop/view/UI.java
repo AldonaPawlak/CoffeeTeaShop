@@ -57,7 +57,7 @@ public class UI {
     }
 
     public void printBasketContent() {
-        //TODO
+        System.out.println("Choose 1 to print basket content");
     }
 
     public void printAdminMenu() {
