@@ -22,7 +22,7 @@ public class Login {
         }
         if (user.getRights().matches("customer")) {
             System.out.println("\nYou might do shopping");
-            CustomerMenuController customerMenuController = new CustomerMenuController();
+            CustomerMenuController customerMenuController = new CustomerMenuController(user);
             customerMenuController.userOptions();
             program.runProgram();
         }

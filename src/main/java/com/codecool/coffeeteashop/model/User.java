@@ -47,4 +47,17 @@ public class User {
     public String getRights() {
         return rights;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", mail='" + mail + '\'' +
+                ", password='" + password + '\'' +
+                ", phone=" + phone +
+                ", rights='" + rights + '\'' +
+                '}';
+    }
 }

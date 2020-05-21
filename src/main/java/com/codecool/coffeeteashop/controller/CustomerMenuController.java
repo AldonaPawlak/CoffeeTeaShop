@@ -3,18 +3,26 @@ package com.codecool.coffeeteashop.controller;
 
 import com.codecool.coffeeteashop.controller.DAO.ProductCategoryDAO;
 import com.codecool.coffeeteashop.controller.DAO.ProductDAO;
+import com.codecool.coffeeteashop.model.Cart;
+import com.codecool.coffeeteashop.model.Product;
+import com.codecool.coffeeteashop.model.User;
 import com.codecool.coffeeteashop.view.Input;
 import com.codecool.coffeeteashop.view.UI;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerMenuController {
+    Cart cart;
     UI ui = new UI();
+    User user;
     Input input = new Input();
     ProductDAO productDAO = new ProductDAO();
     ProductCategoryDAO productCategoryDAO = new ProductCategoryDAO();
 
-    public CustomerMenuController() {
+    public CustomerMenuController(User user) {
+        this.user = user;
     }
 
     public void userOptions() throws IOException {
@@ -39,7 +47,8 @@ public class CustomerMenuController {
                     break;
                 }
                 case 3: {
-
+                    cart = shopping();
+                    System.out.println(cart.toString());
                     break;
                 }
                 case 4: {
@@ -56,6 +65,23 @@ public class CustomerMenuController {
                 }
             }
         }
+    }
+
+    private Cart shopping() throws IOException {
+        List<Product> products = new ArrayList<>();
+        boolean keepBuying = true;
+        while(keepBuying) {
+            productDAO.select();
+            int productId = input.getIntegerInput("Enter product Id you want to buy or 0 to back to menu: ");
+            if (productId == 0) {
+                keepBuying = false;
+            }
+            Product chosenProduct = productDAO.getProduct(productId);
+            products.add(chosenProduct);
+        }
+        Cart cart = new Cart(products, user);
+
+        return cart;
     }
 
     private void showSpecificCategory() throws IOException {

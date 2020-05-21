@@ -40,10 +40,11 @@ public class UI {
 
                 + "1 - Show all products:\n"
                 + "2 - Choose category of products to show\n"
-                + "3 - Show quantity of my basket\n"
-                + "4 - Show my previous orders\n"
-                + "5 - Show statistics of my orders\n"
-                + "6 - Show all products with rates\n"
+                + "3 - Bou something\n"
+                + "4 - Show quantity of my basket\n"
+                + "5 - Show my previous orders\n"
+                + "6 - Show statistics of my orders\n"
+                + "7 - Show all products with rates\n"
                 + "0 - Back to previous menu\n");
     }
 

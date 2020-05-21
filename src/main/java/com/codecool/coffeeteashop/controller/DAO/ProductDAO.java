@@ -1,5 +1,6 @@
 package com.codecool.coffeeteashop.controller.DAO;
 
+import com.codecool.coffeeteashop.model.Product;
 import com.codecool.coffeeteashop.view.Input;
 
 import java.io.IOException;
@@ -209,6 +210,35 @@ public class ProductDAO extends DataBaseDAO implements DAO{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public Product getProduct(int id){
+        try{
+            connect();
+            connection.setAutoCommit(false);
+            ResultSet rs = statement.executeQuery( String.format("SELECT * FROM Products WHERE Id_product='%d';", id));
+            while ( rs.next() ) {
+                String  name = rs.getString("Name");
+                String  description = rs.getString("Description");
+                double price = rs.getFloat("Price");
+                int quantity = rs.getInt("Quantity");
+                int idCategory = rs.getInt("Id_category");
+                boolean isAvailable = rs.getBoolean("isAvailable");
+                int rating = rs.getInt("Rating");
+                int numberOfRates = rs.getInt("Number_of_rates");
+
+                Product chosenProduct = new Product(id, name, description, price, quantity, idCategory, rating, numberOfRates, isAvailable);
+
+                return chosenProduct;
+            }
+            rs.close();
+            statement.close();
+            connection.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
 

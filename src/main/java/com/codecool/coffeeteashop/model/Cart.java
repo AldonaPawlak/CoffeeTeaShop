@@ -9,18 +9,19 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Cart {
     private UI ui = new UI();
     private Input input = new Input();
     private User user;
     private Integer id;
-    private List<Product> products = new ArrayList<Product>();
+//    private Map<Product, Integer> products;
+    private List<Product> products;
     Product product;
     ProductDAO productDAO = new ProductDAO();
 
-    public Cart(int id, ArrayList<Product> products, User user) {
-        this.id = id;
+    public Cart(List<Product> products, User user) {
         this.user = user;
         this.products = products;
     }
@@ -33,9 +34,13 @@ public class Cart {
         return products;
     }
 
-    public void addToCart() {
+    public void addToCart(Product product){
         products.add(product);
     }
+
+//    public void addToCart() {
+//        products.merge(product, 1, Integer::sum);
+//    }
 
     public void editCart() throws IOException {
         ui.printUserBasketMenu();
@@ -69,6 +74,14 @@ public class Cart {
     public void changeQuantityOfProduct() throws IOException {
         String productName = input.getStringInput("Enter name of the product to edit: ");
         int quantity = input.getIntegerInput("Enter quantity of product: ");
+
+//        Set<Map.Entry<Product, Integer>> entries = products.entrySet();
+//        for (Map.Entry<Product, Integer> entry : entries) {
+//            if(entry.getKey().getName().equals(productName)){
+//                entry.getKey().setQuantity(quantity);
+//            }
+//        }
+
         for (Product product : products){
             if (product.getName().equals(productName)){
                 product.setQuantity(quantity);
@@ -77,6 +90,7 @@ public class Cart {
     }
 
     public void removeFromCart() throws IOException {
+
         String productNameToDelete = input.getStringInput("Enter name of the product to delete: ");
         products.removeIf(productToDelete -> product.getName().equals(productNameToDelete));
     }
@@ -91,4 +105,11 @@ public class Cart {
         return totalPrice;
     }
 
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "user=" + user +
+                ", products=" + products +
+                '}';
+    }
 }

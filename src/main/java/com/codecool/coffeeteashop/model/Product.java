@@ -4,18 +4,24 @@ public class Product {
 
     private final int id;
     private final String name;
-    private final float price;
+    private final String description;
+    private final double price;
     private int quantity;
-    private final int categoryId;
-    private final Boolean isAvailable;
+    private final int idCategory;
+    private final int rating;
+    private final int numberOfRates;
+    private final boolean isAvailable;
 
 
-    public Product(int id, String name, float price, int quantity, int categoryId, Boolean isAvailable) {
+    public Product(int id, String name, String description, double price, int quantity, int idCategory, int rating, int numberOfRates, boolean isAvailable) {
         this.id = id;
         this.name = name;
+        this.description = description;
         this.price = price;
         this.quantity = quantity;
-        this.categoryId = categoryId;
+        this.idCategory = idCategory;
+        this.rating = rating;
+        this.numberOfRates = numberOfRates;
         this.isAvailable = isAvailable;
     }
 
@@ -27,7 +33,11 @@ public class Product {
         return name;
     }
 
-    public float getPrice() {
+    public String getDescription() {
+        return description;
+    }
+
+    public double getPrice() {
         return price;
     }
 
@@ -35,15 +45,38 @@ public class Product {
         return quantity;
     }
 
+    public int getIdCategory() {
+        return idCategory;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public int getNumberOfRates() {
+        return numberOfRates;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
     public void setQuantity(int quantity){
         this.quantity = quantity;
     }
 
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public Boolean getAvailable() {
-        return isAvailable;
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", idCategory=" + idCategory +
+                ", rating=" + rating +
+                ", numberOfRates=" + numberOfRates +
+                ", isAvailable=" + isAvailable +
+                '}';
     }
 }
