@@ -188,7 +188,7 @@ public class ProductDAO extends DataBaseDAO implements DAO{
                 System.exit(0);
             }
         }
-    }
+
 
     public void selectAllProductsWithRates() {
         try{
