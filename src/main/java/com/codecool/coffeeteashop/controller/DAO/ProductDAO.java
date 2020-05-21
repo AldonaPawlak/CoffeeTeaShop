@@ -1,9 +1,12 @@
 package com.codecool.coffeeteashop.controller.DAO;
 
+import com.codecool.coffeeteashop.view.Input;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ProductDAO extends DataBaseDAO implements DAO{
+    Input input = new Input();
 
     public void select() {
         try{
@@ -44,7 +47,22 @@ public class ProductDAO extends DataBaseDAO implements DAO{
 
     @Override
     public void delete() {
+        final Integer idCategory = input.getIntegerInput("Type Category ID: ");
+        final Integer idProduct = input.getIntegerInput("Type product ID: ");
+        try {
+            connect();
+            connection.setAutoCommit(false);
+            String sql = "DELETE FROM Products WHERE Id_category = '%d' AND Id_product = '%d';" +
+                    "VALUES ('Id_category', 'Id_product')", idCategory, idProduct);
+            statement.executeUpdate(sql);
+            connection.commit();
 
+            statement.close();
+            connection.close();
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
     }
 
     @Override
