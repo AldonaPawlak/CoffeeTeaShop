@@ -52,7 +52,7 @@ public class ProductDAO extends DataBaseDAO implements DAO{
         try {
             connect();
             connection.setAutoCommit(false);
-            String sql = "DELETE FROM Products WHERE Id_category = '%d' AND Id_product = '%d';" +
+            String sql = String.format("DELETE FROM Products WHERE Id_category = '%d' AND Id_product = '%d'", idCategory, idProduct +
                     "VALUES ('Id_category', 'Id_product')", idCategory, idProduct);
             statement.executeUpdate(sql);
             connection.commit();

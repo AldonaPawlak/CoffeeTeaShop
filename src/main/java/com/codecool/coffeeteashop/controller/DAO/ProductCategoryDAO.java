@@ -1,3 +1,4 @@
+
 package com.codecool.coffeeteashop.controller.DAO;
 
 import com.codecool.coffeeteashop.view.Input;
@@ -39,11 +40,9 @@ public class ProductCategoryDAO extends DataBaseDAO implements DAO{
     @Override
     public void update() {
 
-        // TODO
-        // must be repaired
-        
         String newValue = input.getStringInput("Enter new value of the product category: ");
         int idCategory = input.getIntegerInput("Enter id of product category to edit: ");
+
         try {
             connect();
             connection.setAutoCommit(false);
@@ -71,19 +70,7 @@ public class ProductCategoryDAO extends DataBaseDAO implements DAO{
 
     @Override
     public void delete() {
-        try {
-            connect();
-            connection.setAutoCommit(false);
-            String sql = "DELETE from Products where Id_category = 2 AND Id_product = 2;";
-            statement.executeUpdate(sql);
-            connection.commit();
 
-            statement.close();
-            connection.close();
-        } catch ( Exception e ) {
-            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-            System.exit(0);
-        }
     }
 
     @Override
