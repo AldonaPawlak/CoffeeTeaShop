@@ -135,7 +135,8 @@ public class UserDAO<Person> extends DataBaseDAO implements DAO{
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        //return null;
+        return user;
     }
 
 }

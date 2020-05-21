@@ -11,7 +11,7 @@ public class AdminMenuController {
     UI ui = new UI();
     Input input = new Input();
 
-    public void adminOptions() { // shoud be used in case someone will register as admin
+    public void adminOptions() { // should be used in case someone will register as admin
         ui.printAdminMenu();
         final int adminChoice = input.getIntegerInput("What do you want to do right now?");
         switch (adminChoice) {
@@ -37,14 +37,17 @@ public class AdminMenuController {
                 break;
             }
             case 6: {
-                ui.print("Deactivate product");
-                productDAO.delete();
                 break;
             }
             case 7: {
                 break;
             }
             case 8: {
+                break;
+            }
+            case 9: {
+                ui.print("DEACTIVATE PRODUCT");
+                productDAO.delete();
                 break;
             }
         }
