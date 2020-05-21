@@ -107,7 +107,7 @@ public class ProductDAO extends DataBaseDAO implements DAO{
         try{
             connect();
             connection.setAutoCommit(false);
-            ResultSet resultSets = statement.executeQuery( String.format("SELECT * FROM Products where Id_category = %d;", categoryId ));
+            ResultSet resultSets = statement.executeQuery( String.format("SELECT  Products where Id_category = %d;", categoryId ));
             while ( resultSets.next() ) {
                 int id = resultSets.getInt("id_product");
                 String  name = resultSets.getString("Name");
@@ -123,6 +123,27 @@ public class ProductDAO extends DataBaseDAO implements DAO{
                 System.out.println( "Price = " + price );
                 System.out.println( "Quantity in shop = " + quantity );
                 System.out.println( "Id_category = " + idCategory );
+                System.out.println("isAvailable = " + isAvailable);
+                System.out.println();
+            }
+            resultSets.close();
+            statement.close();
+            connection.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void selectSpecificProductAvailability(int productId) {
+        try{
+            connect();
+            connection.setAutoCommit(false);
+            ResultSet resultSets = statement.executeQuery( String.format("SELECT isAvailable, Quantity FROM Products where Id_product = %d;", productId ));
+            while ( resultSets.next() ) {
+                int quantity = resultSets.getInt("Quantity");
+                boolean isAvailable = resultSets.getBoolean("isAvailable");
+                System.out.println( "Quantity in shop = " + quantity );
                 System.out.println("isAvailable = " + isAvailable);
                 System.out.println();
             }

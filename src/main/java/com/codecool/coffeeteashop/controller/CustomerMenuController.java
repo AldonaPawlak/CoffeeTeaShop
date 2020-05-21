@@ -31,24 +31,40 @@ public class CustomerMenuController {
         productDAO.selectSpecificCategory(categoryId);
     }
 
-    private int getCategoryId(String categoryName){
-        if (categoryName.equals("coffee")){
+
+    private int getCategoryId(String categoryName) {
+        if (categoryName.equals("coffee")) {
             return 1;
-        }
-        else if (categoryName.equals("tea")){
+        } else if (categoryName.equals("tea")) {
             return 2;
-        }
-        else if (categoryName.equals("sugar")){
+        } else if (categoryName.equals("sugar")) {
             return 3;
-        }
-        else if (categoryName.equals("coffee cups")){
+        } else if (categoryName.equals("coffee cups")) {
             return 4;
-        }
-        else if (categoryName.equals("chocolate")){
+        } else if (categoryName.equals("chocolate")) {
             return 5;
         }
 
         return 1;
     }
 
+    private void checkAvailibilityOfProduct() throws IOException {
+        String product = input.getStringInput("Which product you want to availibility to check?\n");
+        int productId = getProductID(product);
+        ProductDAO productDAO = new ProductDAO();
+        productDAO.selectSpecificProductAvailability(productId);
+    }
+
+    private int getProductID(String productName) {
+        if (productName.equalsIgnoreCase("Arabica")) {
+            return 1;
+        }
+        else if (productName.equalsIgnoreCase("Robutsa")) {
+            return 2;
+        }
+        else if (productName.equalsIgnoreCase("Liberika")) {
+            return 3;
+        }
+        return 0;
+    }
 }
