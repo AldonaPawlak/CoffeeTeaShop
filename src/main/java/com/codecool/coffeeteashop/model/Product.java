@@ -5,7 +5,7 @@ public class Product {
     private final int id;
     private final String name;
     private final float price;
-    private final int quantity;
+    private int quantity;
     private final int categoryId;
     private final Boolean isAvailable;
 
@@ -33,6 +33,10 @@ public class Product {
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public void setQuantity(int quantity){
+        this.quantity = quantity;
     }
 
     public int getCategoryId() {
