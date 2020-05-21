@@ -39,7 +39,19 @@ public class ProductDAO extends DataBaseDAO implements DAO{
 
     @Override
     public void update() {
+        try {
+            connect();
+            connection.setAutoCommit(false);
+            String sql = String.format("UPDATE Categories set Name = '%s' where Id_user = 1;");
+            statement.executeUpdate(sql);
+            connection.commit();
 
+            statement.close();
+            connection.close();
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
     }
 
     @Override
