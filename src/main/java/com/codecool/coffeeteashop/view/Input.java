@@ -1,24 +1,28 @@
 package com.codecool.coffeeteashop.view;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Input {
-    private final Scanner scanner = new Scanner(System.in);
+    private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    private Scanner scanner = new Scanner(System.in);
 
-    public String getStringInput(String message) {
+    public String getStringInput(String message) throws IOException {
         System.out.print(message);
-        String input = scanner.nextLine();
+        String input = reader.readLine();
         if (input == null || input.equals(" ")){
             System.out.println("Something went wrong. Try again");
             System.out.print(message);
-            input = scanner.next();
+            input = reader.readLine();
         }
         return input;
     }
 
-    public int getIntegerInput(String message) {
+    public int getIntegerInput(String message) throws IOException {
         System.out.print(message);
-        return scanner.nextInt();
+        return Integer.parseInt(reader.readLine());
     }
 
     public int getNumericInput(String title, int from, int to) {
@@ -48,8 +52,8 @@ public class Input {
         return scanner;
     }
 
-    public void getEmptyInput() {
+    public void getEmptyInput() throws IOException {
         System.out.println("Press enter to continue");
-        scanner.nextLine();
+        reader.readLine();
     }
 }
