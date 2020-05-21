@@ -3,11 +3,12 @@ package com.codecool.coffeeteashop.model;
 import com.codecool.coffeeteashop.controller.DAO.ProductDAO;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class Cart {
     private Integer id;
-    private ArrayList<Product> products;
+    private List<Product> products = new ArrayList<Product>();
     Product product;
     ProductDAO productDAO = new ProductDAO();
 
@@ -20,12 +21,12 @@ public class Cart {
         return id;
     }
 
-    public ArrayList<Product> products() {
+    public List<Product> products() {
         return products;
     }
 
     public void addToCart() {
-         // TODO
+        products.add(product);
     }
 
     public void editCart() {
@@ -33,11 +34,11 @@ public class Cart {
     }
 
     public void emptyCart() {
-        // TODO
+            products.clear();
     }
 
     public void removeFromCart() {
-        // TODO
+        products.remove(product);
     }
 
     public void getProducts() {
