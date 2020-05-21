@@ -21,22 +21,24 @@ public class Program {
 
     public void runProgram() throws IOException {
         ui.printMenu();
-        int userOption = input.getNumericInput("Enter option: ", 0, 2);
-        while (userOption != 0) {
+        int userOption = input.getNumericInput("Enter option: ", 0, 3);
+        while (true) {
             switch (userOption) {
                 case 1: {
                     Login login = new Login();
-                    login.loginToDb();
+                    login.loginToDb(this);
                     break;
                 }
                 case 2: {
-                    ui.print("Registration");
+                    ui.print("\nRegistration\n");
                     Registration registration = new Registration(userDAO);
-                    registration.register();
+                    registration.register(this, ui);
+
                     break;
                 }
                 case 0: {
-                    ui.print("Thank you for visiting our shop.\n");
+                    ui.print("\nThank you for visiting our shop.\n");
+                    exitProgram();
                     break;
                 }
                 default: {
@@ -46,5 +48,9 @@ public class Program {
                 }
             }
         }
+    }
+
+    private void exitProgram() {
+        System.exit(0);
     }
 }
