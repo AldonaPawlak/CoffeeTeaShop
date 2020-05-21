@@ -10,6 +10,7 @@ import java.io.IOException;
 public class CustomerMenuController {
     UI ui = new UI();
     Input input = new Input();
+    ProductDAO productDAO = new ProductDAO();
 
     public CustomerMenuController() {
     }
@@ -36,6 +37,10 @@ public class CustomerMenuController {
             }
             case 5 : {
 
+                break;
+            }
+            case 6 : {
+                getProductsWithRates();
                 break;
             }
         }
@@ -86,5 +91,9 @@ public class CustomerMenuController {
             return 3;
         }
         return 0;
+    }
+
+    private void getProductsWithRates() {
+        productDAO.selectAllProductsWithRates();
     }
 }

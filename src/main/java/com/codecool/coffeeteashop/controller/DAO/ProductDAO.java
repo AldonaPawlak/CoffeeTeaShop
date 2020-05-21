@@ -156,4 +156,25 @@ public class ProductDAO extends DataBaseDAO implements DAO{
             e.printStackTrace();
         }
     }
+
+    public void selectAllProductsWithRates() {
+        try{
+            connect();
+            connection.setAutoCommit(false);
+            ResultSet rs = statement.executeQuery( "SELECT Name, Rating FROM Products;" );
+            while ( rs.next() ) {
+                String  name = rs.getString("Name");
+                int  rating = rs.getInt("Rating");
+
+                System.out.println( "Name = " + name );
+                System.out.println( "Rating = " + rating );
+            }
+            rs.close();
+            statement.close();
+            connection.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
