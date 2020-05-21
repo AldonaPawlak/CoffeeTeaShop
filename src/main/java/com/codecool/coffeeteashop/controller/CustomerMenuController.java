@@ -47,17 +47,20 @@ public class CustomerMenuController {
         productDAO.selectSpecificCategory(categoryId);
     }
 
-
-    private int getCategoryId(String categoryName) {
-        if (categoryName.equals("coffee")) {
+    private int getCategoryId(String categoryName){
+        if (categoryName.equals("coffee")){
             return 1;
-        } else if (categoryName.equals("tea")) {
+        }
+        else if (categoryName.equals("tea")){
             return 2;
-        } else if (categoryName.equals("sugar")) {
+        }
+        else if (categoryName.equals("sugar")){
             return 3;
-        } else if (categoryName.equals("coffee cups")) {
+        }
+        else if (categoryName.equals("coffee cups")){
             return 4;
-        } else if (categoryName.equals("chocolate")) {
+        }
+        else if (categoryName.equals("chocolate")){
             return 5;
         }
 

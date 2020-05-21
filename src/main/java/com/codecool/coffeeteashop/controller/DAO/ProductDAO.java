@@ -107,7 +107,7 @@ public class ProductDAO extends DataBaseDAO implements DAO{
         try{
             connect();
             connection.setAutoCommit(false);
-            ResultSet resultSets = statement.executeQuery( String.format("SELECT  Products where Id_category = %d;", categoryId ));
+            ResultSet resultSets = statement.executeQuery( String.format("SELECT * FROM Products where Id_category = %d;", categoryId ));
             while ( resultSets.next() ) {
                 int id = resultSets.getInt("id_product");
                 String  name = resultSets.getString("Name");
