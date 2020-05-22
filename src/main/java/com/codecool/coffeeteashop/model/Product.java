@@ -1,5 +1,11 @@
 package com.codecool.coffeeteashop.model;
 
+import com.codecool.coffeeteashop.controller.DAO.ProductDAO;
+import com.codecool.coffeeteashop.view.Input;
+import com.codecool.coffeeteashop.view.UI;
+
+import java.io.IOException;
+
 public class Product {
 
     private final int id;
@@ -11,6 +17,8 @@ public class Product {
     private final int rating;
     private final int numberOfRates;
     private final boolean isAvailable;
+    private UI ui = new UI();
+    private Input input = new Input();
 
 
     public Product(int id, String name, String description, double price, int quantity, int idCategory, int rating, int numberOfRates, boolean isAvailable) {
@@ -63,6 +71,34 @@ public class Product {
 
     public void setQuantity(int quantity){
         this.quantity = quantity;
+    }
+
+    public void productMenu() throws IOException {
+        ui.printProductMenu();
+        int option = input.getIntegerInput("Enter option: ");
+        switch (option){
+            case 1:
+                ui.print("Add product");
+                productMenu();
+                break;
+            case 2:
+                ui.print("Rate product");
+                int userRating = input.getIntegerInput("Enter rates 1-5");
+                ProductDAO productDAO = new ProductDAO();
+                productDAO.updateRating(this.name, userRating);
+                productMenu();
+                break;
+            case 3:
+                ui.print("show availability");
+                productMenu();
+                break;
+            case 0:
+                break;
+            default:
+                ui.print("Wrong option");
+                productMenu();
+                break;
+        }
     }
 
     @Override
