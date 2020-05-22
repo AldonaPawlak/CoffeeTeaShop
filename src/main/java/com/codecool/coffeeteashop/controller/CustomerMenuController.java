@@ -9,6 +9,7 @@ import com.codecool.coffeeteashop.model.Product;
 import com.codecool.coffeeteashop.model.User;
 import com.codecool.coffeeteashop.view.Input;
 import com.codecool.coffeeteashop.view.UI;
+import jdk.internal.misc.FileSystemOption;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,7 +20,9 @@ public class CustomerMenuController {
     UI ui = new UI();
     User user;
     Input input = new Input();
+    OrderDAO orderDAO = new OrderDAO(user);
     ProductDAO productDAO = new ProductDAO();
+
 
     ProductCategoryDAO productCategoryDAO = new ProductCategoryDAO();
 
@@ -41,7 +44,8 @@ public class CustomerMenuController {
                     productDAO.select();
                     input.getEmptyInput();
                     //checkAvailibilityOfProduct(); call in other place
-//                productDAO.updateRating("Arabica", 4);
+//                   productDAO.updateRating("Arabica", 4);
+                    System.out.println("???git status");
                     break;
                 }
                 case 2: {
@@ -58,7 +62,7 @@ public class CustomerMenuController {
                     break;
                 }
                 case 5: {
-
+                    //orderDAO.selectUserOrders(1);
                     break;
                 }
                 case 6: {
