@@ -141,14 +141,14 @@ public class OrderDAO extends DataBaseDAO implements DAO {
             ResultSet rs = statement.executeQuery( String.format("SELECT * FROM Orders where Id_user = %d;", userId));
             while ( rs.next() ) {
                 int id = rs.getInt("Id_order");
-                int  idCustomer = rs.getInt("Id_customer");
+                int  idCustomer = rs.getInt("Id_user");
                 String orderStatus  = rs.getString("Order_status");
                 Date paidAt = rs.getDate("Order_payAt");
                 Date createdAt = rs.getDate("Order_createdAt");
 
 
                 System.out.println( "Id_order = " + id );
-                System.out.println( "Id_customer = " + idCustomer );
+                System.out.println( "Id_user = " + idCustomer );
                 System.out.println( "Order_status = " + orderStatus );
                 System.out.println( "Order_payAt = " + paidAt );
                 System.out.println( "Order_createdAt = " + createdAt );
