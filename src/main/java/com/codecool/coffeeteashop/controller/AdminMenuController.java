@@ -23,21 +23,18 @@ public class AdminMenuController {
         final int adminChoice = input.getIntegerInput("What do you want to do right now?");
         switch (adminChoice) {
             case 1: {
-                ui.print("ADDING THE NEW PRODUCT CATEGORY");
-                productCategoryDAO.insertInto();
+                addingNewProductCategoryToDB();
                 break;
             }
             case 2: {
-                ui.print("EDITING NAME OF PRODUCT CATEGORY");
-                productCategoryDAO.update();
+                editProductName();
                 break;
             }
             case 3: {
                 break;
             }
             case 4: {
-                ui.print("ADDING THE NEW PRODUCT");
-                productDAO.insertInto();
+                addingNewProductToDB();
                 break;
             }
             case 5: {
@@ -70,6 +67,21 @@ public class AdminMenuController {
 
     private void statisticsFeedbackFromUsers() {
         productDAO.feedbackStatistics();
+    }
+
+    private void addingNewProductToDB() throws IOException {
+        ui.print("ADDING THE NEW PRODUCT");
+        productDAO.insertInto();
+    }
+
+    public void editProductName() throws IOException{
+        ui.print("EDITING NAME OF PRODUCT CATEGORY");
+        productCategoryDAO.update();
+    }
+
+    public void addingNewProductCategoryToDB() throws IOException{
+        ui.print("ADDING THE NEW PRODUCT CATEGORY");
+        productCategoryDAO.insertInto();
     }
 }
 

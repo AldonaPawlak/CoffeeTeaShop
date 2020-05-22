@@ -1,6 +1,7 @@
 
 package com.codecool.coffeeteashop.controller;
 
+import com.codecool.coffeeteashop.controller.DAO.OrderDAO;
 import com.codecool.coffeeteashop.controller.DAO.ProductCategoryDAO;
 import com.codecool.coffeeteashop.controller.DAO.ProductDAO;
 import com.codecool.coffeeteashop.model.Cart;
@@ -19,6 +20,7 @@ public class CustomerMenuController {
     User user;
     Input input = new Input();
     ProductDAO productDAO = new ProductDAO();
+
     ProductCategoryDAO productCategoryDAO = new ProductCategoryDAO();
 
     public CustomerMenuController(User user) {
@@ -60,11 +62,11 @@ public class CustomerMenuController {
                     break;
                 }
                 case 6: {
-                    getProductsWithRates();
+
                     break;
                 }
                 case 7 : {
-                       productDAO.selectAllProductsWithRates();
+                    getProductsWithRates();
                     break;
                 }
             }

@@ -98,7 +98,7 @@ public class OrderDAO extends DataBaseDAO implements DAO {
         }
     }
 
-    public void ordersWithStatuses() {  //conversion exception ??
+    public void ordersWithStatuses() {
         try {
             connect();
             connection.setAutoCommit(false);
@@ -112,6 +112,26 @@ public class OrderDAO extends DataBaseDAO implements DAO {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
+    }
+
+    public void feedbackStatistics() {
+        try{
+            connect();
+            connection.setAutoCommit(false);
+            ResultSet rs = statement.executeQuery( "SELECT Number_of_rates FROM Orders;" );
+            while ( rs.next() ) {
+                int numberOfRates = rs.getInt("Number_of_rates");
+                System.out.println("Number_of_rates = " + numberOfRates);
+                System.out.println();
+            }
+            rs.close();
+            statement.close();
+            connection.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }
 
