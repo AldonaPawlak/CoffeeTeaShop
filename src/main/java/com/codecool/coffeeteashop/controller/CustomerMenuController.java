@@ -52,6 +52,9 @@ public class CustomerMenuController {
                     break;
                 }
                 case 4: {
+                    System.out.println(cart.toString());
+                    System.out.println();
+                    input.getEmptyInput();
 
                     break;
                 }

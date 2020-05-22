@@ -40,7 +40,7 @@ public class UI {
 
                 + "1 - Show all products:\n"
                 + "2 - Choose category of products to show\n"
-                + "3 - Bou something\n"
+                + "3 - Buy something\n"
                 + "4 - Show quantity of my basket\n"
                 + "5 - Show my previous orders\n"
                 + "6 - Show statistics of my orders\n"
