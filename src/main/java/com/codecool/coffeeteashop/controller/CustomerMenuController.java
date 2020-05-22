@@ -45,7 +45,6 @@ public class CustomerMenuController {
                     input.getEmptyInput();
                     //checkAvailibilityOfProduct(); call in other place
 //                   productDAO.updateRating("Arabica", 4);
-                    System.out.println("???git status");
                     break;
                 }
                 case 2: {
