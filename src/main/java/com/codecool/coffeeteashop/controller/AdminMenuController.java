@@ -38,6 +38,7 @@ public class AdminMenuController {
                 break;
             }
             case 5: {
+                productDAO.editProduct();
                 break;
             }
             case 6: {

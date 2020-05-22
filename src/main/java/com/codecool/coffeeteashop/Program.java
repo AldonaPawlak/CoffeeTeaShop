@@ -23,7 +23,7 @@ public class Program {
         ui.printMenu();
         boolean isRunning = true;
         while (isRunning) {
-            int userOption = input.getNumericInput("Enter option: ", 0, 3);
+            int userOption = input.getIntegerInput("Enter option: ");
             if(userOption == 0) {
                 isRunning = false;
             }

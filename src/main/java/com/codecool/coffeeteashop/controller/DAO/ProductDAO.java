@@ -4,8 +4,10 @@ import com.codecool.coffeeteashop.model.Product;
 import com.codecool.coffeeteashop.view.Input;
 
 import java.io.IOException;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class ProductDAO extends DataBaseDAO implements DAO{
     Input input = new Input();
@@ -256,6 +258,39 @@ public class ProductDAO extends DataBaseDAO implements DAO{
             e.printStackTrace();
         }
 
+    }
+
+    public void editProduct() throws IOException {
+        int idProduct = input.getIntegerInput("Enter id of product to edit: ");
+        String newProductName = input.getStringInput("Enter new product name: ");
+        int newPrice = input.getIntegerInput("Enter new product price: ");
+        String newQuantity = input.getStringInput("Enter new product quantity: ");
+
+
+        try {
+            connect();
+            connection.setAutoCommit(false);
+            PreparedStatement update = connection.prepareStatement
+                    ("UPDATE Products SET Name = ?, Price = ?, Quantity = ? WHERE Id_product = ?");
+
+            update.setString(1, newProductName);
+            update.setInt(2, newPrice);
+            update.setString(3, newQuantity);
+            update.setInt(4, idProduct);
+
+            int x = update.executeUpdate();
+            if (x > 0)
+                System.out.println("Name of the product category successfully updated");
+            else
+                System.out.println("ERROR OCCURRED :(");
+
+            connection.commit();
+            statement.close();
+            connection.close();
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
     }
 }
 
