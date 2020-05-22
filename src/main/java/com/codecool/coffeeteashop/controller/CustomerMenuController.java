@@ -9,7 +9,7 @@ import com.codecool.coffeeteashop.model.Product;
 import com.codecool.coffeeteashop.model.User;
 import com.codecool.coffeeteashop.view.Input;
 import com.codecool.coffeeteashop.view.UI;
-import jdk.internal.misc.FileSystemOption;
+//import jdk.internal.misc.FileSystemOption;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -61,7 +61,7 @@ public class CustomerMenuController {
                     break;
                 }
                 case 5: {
-                    //orderDAO.selectUserOrders(1);
+                    orderDAO.selectUserOrders(1);
                     break;
                 }
                 case 6: {
