@@ -23,21 +23,23 @@ public class AdminMenuController {
         final int adminChoice = input.getIntegerInput("What do you want to do right now?");
         switch (adminChoice) {
             case 1: {
-                addingNewProductCategoryToDB();
+                addNewProductCategory ();
                 break;
             }
             case 2: {
-                editProductName();
+                editProductCategoryName();
                 break;
             }
             case 3: {
+                productDAO.deactivateProductAutomatically();
                 break;
             }
             case 4: {
-                addingNewProductToDB();
+                addNewProduct();
                 break;
             }
             case 5: {
+                productDAO.editProduct();
                 break;
             }
             case 6: {
@@ -56,6 +58,35 @@ public class AdminMenuController {
         }
     }
 
+    public void editProductName() throws IOException{
+        ui.print("EDITING NAME OF PRODUCT CATEGORY");
+        productCategoryDAO.update();
+    }
+
+    public void addingNewProductCategoryToDB() throws IOException{
+        ui.print("ADDING THE NEW PRODUCT CATEGORY");
+        productCategoryDAO.insertInto();
+    }
+
+
+       public void addNewProductCategory () throws IOException {
+             System.out.println("ADDING THE NEW PRODUCT CATEGORY");
+       	        productCategoryDAO.insertInto();
+
+    }
+
+    public void editProductCategoryName() throws IOException {
+                System.out.println("EDITING NAME OF PRODUCT CATEGORY");
+        	        productCategoryDAO.update();
+
+    }
+
+    public void addNewProduct() throws IOException {
+        System.out.println("ADDING THE NEW PRODUCT");
+        productDAO.insertInto();
+    }
+
+
     private void deactivateProduct() {
         ui.print("DEACTIVATING PRODUCT");
         productDAO.update();
@@ -69,19 +100,5 @@ public class AdminMenuController {
         productDAO.feedbackStatistics();
     }
 
-    private void addingNewProductToDB() throws IOException {
-        ui.print("ADDING THE NEW PRODUCT");
-        productDAO.insertInto();
-    }
-
-    public void editProductName() throws IOException{
-        ui.print("EDITING NAME OF PRODUCT CATEGORY");
-        productCategoryDAO.update();
-    }
-
-    public void addingNewProductCategoryToDB() throws IOException{
-        ui.print("ADDING THE NEW PRODUCT CATEGORY");
-        productCategoryDAO.insertInto();
-    }
 }
 

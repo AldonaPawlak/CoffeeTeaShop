@@ -57,7 +57,9 @@ public class CustomerMenuController {
                     break;
                 }
                 case 4: {
-
+                    System.out.println(cart.toString());
+                    System.out.println();
+                    input.getEmptyInput();
                     break;
                 }
                 case 5: {
@@ -65,7 +67,7 @@ public class CustomerMenuController {
                     break;
                 }
                 case 6: {
-
+                    productDAO.selectAllProductsWithRates();
                     break;
                 }
                 case 7 : {
