@@ -31,6 +31,7 @@ public class AdminMenuController {
                 break;
             }
             case 3: {
+                productDAO.deactivateProductAutomatically();
                 break;
             }
             case 4: {

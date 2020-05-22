@@ -261,11 +261,11 @@ public class ProductDAO extends DataBaseDAO implements DAO{
     }
 
     public void editProduct() throws IOException {
+        System.out.println("EDIT A PRODUCT - ITS NAME< PRICE< QUANTITY");
         int idProduct = input.getIntegerInput("Enter id of product to edit: ");
         String newProductName = input.getStringInput("Enter new product name: ");
         int newPrice = input.getIntegerInput("Enter new product price: ");
         String newQuantity = input.getStringInput("Enter new product quantity: ");
-
 
         try {
             connect();
@@ -280,7 +280,34 @@ public class ProductDAO extends DataBaseDAO implements DAO{
 
             int x = update.executeUpdate();
             if (x > 0)
-                System.out.println("Name of the product category successfully updated");
+                System.out.println("The product successfully updated");
+            else
+                System.out.println("ERROR OCCURRED :(");
+
+            connection.commit();
+            statement.close();
+            connection.close();
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
+    }
+
+    public void deactivateProductAutomatically () {
+        System.out.println("DEACTIVATE A PRODUCT AUTOMATICALLY IF THE QUANTITY IS 0");
+
+        try {
+            connect();
+            connection.setAutoCommit(false);
+            PreparedStatement deactivateAutomatically = connection.prepareStatement
+                    ("UPDATE Products SET isAvailable = ? WHERE Quantity = ?");
+
+            deactivateAutomatically.setBoolean(1, false);
+            deactivateAutomatically.setInt(2, 0);
+
+            int x = deactivateAutomatically.executeUpdate();
+            if (x > 0)
+                System.out.println("The product, which quantity = 0 successfully automatically deactivated");
             else
                 System.out.println("ERROR OCCURRED :(");
 
