@@ -63,6 +63,10 @@ public class CustomerMenuController {
                     getProductsWithRates();
                     break;
                 }
+                case 7 : {
+                       productDAO.selectAllProductsWithRates();
+                    break;
+                }
             }
         }
     }
