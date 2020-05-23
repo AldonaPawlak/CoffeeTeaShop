@@ -27,7 +27,7 @@ public class UI {
     }
 
     public void printMenu() {
-        System.out.println("menu:\n"
+        System.out.println("Main menu:\n\n"
 
                 + "1 - log in\n"
                 + "2 - registration\n"

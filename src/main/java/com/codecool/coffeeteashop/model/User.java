@@ -1,6 +1,8 @@
 package com.codecool.coffeeteashop.model;
 
-public class User {
+import java.io.IOException;
+
+public abstract class User {
 
     private final int id;
     private final String name;
@@ -60,4 +62,21 @@ public class User {
                 ", rights='" + rights + '\'' +
                 '}';
     }
+
+    public boolean isCustomer() {
+        if (rights.equals("customer")){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isAdmin() {
+        if (rights.equals("admin")){
+            return true;
+        }
+        return false;
+    }
+
+    public abstract void displayMenuOptions() throws IOException;
+
 }

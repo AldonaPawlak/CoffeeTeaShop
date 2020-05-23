@@ -1,5 +1,7 @@
 package com.codecool.coffeeteashop.controller.DAO;
 
+import com.codecool.coffeeteashop.model.Admin;
+import com.codecool.coffeeteashop.model.Customer;
 import com.codecool.coffeeteashop.model.User;
 import com.codecool.coffeeteashop.view.Input;
 
@@ -40,7 +42,6 @@ public class UserDAO<Person> extends DataBaseDAO implements DAO{
             }
             rs.close();
             statement.close();
-            connection.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -57,7 +58,6 @@ public class UserDAO<Person> extends DataBaseDAO implements DAO{
             connection.commit();
 
             statement.close();
-            connection.close();
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
@@ -73,7 +73,6 @@ public class UserDAO<Person> extends DataBaseDAO implements DAO{
             statement.executeUpdate(sql);
             connection.commit();
             statement.close();
-            connection.close();
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
@@ -96,7 +95,6 @@ public class UserDAO<Person> extends DataBaseDAO implements DAO{
             statement.executeUpdate(sql);
             statement.close();
             connection.commit();
-            connection.close();
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
@@ -121,13 +119,16 @@ public class UserDAO<Person> extends DataBaseDAO implements DAO{
                 String rights = rs.getString("rights");
 
                 if (mail!=null & password!=null){
-                    User user = new User(id, name, surname, mail, password, phone, rights);
-                    return user;
+                    if (rights.equals("customer")){
+                        return new Customer(id, name, surname, mail, password, phone, rights);
+                    }
+                    else {
+                        return new Admin(id, name, surname, mail, password, phone, rights);
+                    }
                 }
             }
             rs.close();
             statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -23,6 +23,7 @@
 hs_err_pid*
 
 *.idea
+.idea/**/dataSources.local.xml
 
 .classpath
 .project

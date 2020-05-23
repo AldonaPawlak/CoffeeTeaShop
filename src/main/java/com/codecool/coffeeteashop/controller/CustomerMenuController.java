@@ -1,6 +1,7 @@
 
 package com.codecool.coffeeteashop.controller;
 
+import com.codecool.coffeeteashop.controller.DAO.OrderDAO;
 import com.codecool.coffeeteashop.controller.DAO.ProductCategoryDAO;
 import com.codecool.coffeeteashop.controller.DAO.ProductDAO;
 import com.codecool.coffeeteashop.model.Cart;
@@ -8,17 +9,21 @@ import com.codecool.coffeeteashop.model.Product;
 import com.codecool.coffeeteashop.model.User;
 import com.codecool.coffeeteashop.view.Input;
 import com.codecool.coffeeteashop.view.UI;
+//import jdk.internal.misc.FileSystemOption;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerMenuController {
-    Cart cart;
-    UI ui = new UI();
-    User user;
-    Input input = new Input();
-    ProductDAO productDAO = new ProductDAO();
+    private Cart cart;
+    private UI ui = new UI();
+    private User user;
+    private Input input = new Input();
+    private OrderDAO orderDAO = new OrderDAO(user);
+    private ProductDAO productDAO = new ProductDAO();
+
+
     ProductCategoryDAO productCategoryDAO = new ProductCategoryDAO();
 
     public CustomerMenuController(User user) {
@@ -39,10 +44,11 @@ public class CustomerMenuController {
                     productDAO.select();
                     input.getEmptyInput();
                     //checkAvailibilityOfProduct(); call in other place
-//                productDAO.updateRating("Arabica", 4);
+//                   productDAO.updateRating("Arabica", 4);
                     break;
                 }
                 case 2: {
+
                     showSpecificCategory();
                     break;
                 }
@@ -55,14 +61,17 @@ public class CustomerMenuController {
                     System.out.println(cart.toString());
                     System.out.println();
                     input.getEmptyInput();
-
                     break;
                 }
                 case 5: {
-
+                    orderDAO.selectUserOrders(1);
                     break;
                 }
                 case 6: {
+                    productDAO.selectAllProductsWithRates();
+                    break;
+                }
+                case 7 : {
                     getProductsWithRates();
                     break;
                 }

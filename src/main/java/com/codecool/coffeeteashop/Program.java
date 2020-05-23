@@ -20,9 +20,9 @@ public class Program {
     private AdminMenuController adminMenuController = new AdminMenuController();
 
     public void runProgram() throws IOException {
-        ui.printMenu();
         boolean isRunning = true;
         while (isRunning) {
+            ui.printMenu();
             int userOption = input.getNumericInput("Enter option: ", 0, 3);
             if(userOption == 0) {
                 isRunning = false;

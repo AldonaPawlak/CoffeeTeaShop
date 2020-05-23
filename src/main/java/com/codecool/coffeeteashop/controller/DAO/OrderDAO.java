@@ -37,7 +37,6 @@ public class OrderDAO extends DataBaseDAO implements DAO {
             }
             rs.close();
             statement.close();
-            connection.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -54,7 +53,6 @@ public class OrderDAO extends DataBaseDAO implements DAO {
             connection.commit();
 
             statement.close();
-            connection.close();
         } catch (Exception e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
@@ -72,7 +70,6 @@ public class OrderDAO extends DataBaseDAO implements DAO {
             connection.commit();
 
             statement.close();
-            connection.close();
         } catch (Exception e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
@@ -98,7 +95,7 @@ public class OrderDAO extends DataBaseDAO implements DAO {
         }
     }
 
-    public void ordersWithStatuses() {  //conversion exception ??
+    public void ordersWithStatuses() {
         try {
             connect();
             connection.setAutoCommit(false);
@@ -107,10 +104,56 @@ public class OrderDAO extends DataBaseDAO implements DAO {
             statement.executeUpdate(sql);
             statement.close();
             connection.commit();
-            connection.close();
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
+        }
+    }
+
+    public void feedbackStatistics() {
+        try{
+            connect();
+            connection.setAutoCommit(false);
+            ResultSet rs = statement.executeQuery( "SELECT Number_of_rates FROM Orders;" );
+            while ( rs.next() ) {
+                int numberOfRates = rs.getInt("Number_of_rates");
+                System.out.println("Number_of_rates = " + numberOfRates);
+                System.out.println();
+            }
+            rs.close();
+            statement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void selectUserOrders(int userId){
+        try{
+            connect();
+            connection.setAutoCommit(false);
+            ResultSet rs = statement.executeQuery( String.format("SELECT * FROM Orders where Id_user = %d;", userId));
+            while ( rs.next() ) {
+                int id = rs.getInt("Id_order");
+                int  idCustomer = rs.getInt("Id_user");
+                String orderStatus  = rs.getString("Order_status");
+                Date paidAt = rs.getDate("Order_payAt");
+                Date createdAt = rs.getDate("Order_createdAt");
+
+
+                System.out.println( "Id_order = " + id );
+                System.out.println( "Id_user = " + idCustomer );
+                System.out.println( "Order_status = " + orderStatus );
+                System.out.println( "Order_payAt = " + paidAt );
+                System.out.println( "Order_createdAt = " + createdAt );
+                System.out.println();
+            }
+            rs.close();
+            statement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

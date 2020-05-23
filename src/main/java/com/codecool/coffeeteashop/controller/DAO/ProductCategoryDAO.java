@@ -3,8 +3,10 @@ package com.codecool.coffeeteashop.controller.DAO;
 
 import com.codecool.coffeeteashop.view.Input;
 
+
 import java.io.IOException;
 import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -31,7 +33,6 @@ public class ProductCategoryDAO extends DataBaseDAO implements DAO{
             }
             rs.close();
             statement.close();
-            connection.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -56,13 +57,12 @@ public class ProductCategoryDAO extends DataBaseDAO implements DAO{
             if (x > 0)
                 System.out.println("Name of the product category successfully updated");
             else
-                System.out.println("ERROR OCCURED :(");
+                System.out.println("ERROR OCCURRED :(");
 
 
             connection.commit();
 
             statement.close();
-            connection.close();
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
@@ -84,10 +84,8 @@ public class ProductCategoryDAO extends DataBaseDAO implements DAO{
             String sql = String.format("INSERT INTO Categories (Name,Description) " +
                     "VALUES ('%s', '%s');", name, description);
             statement.executeUpdate(sql);
-
             statement.close();
             connection.commit();
-            connection.close();
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
