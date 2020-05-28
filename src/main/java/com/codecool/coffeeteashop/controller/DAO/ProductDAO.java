@@ -215,7 +215,7 @@ public class ProductDAO extends DataBaseDAO implements DAO{
             connect();
             connection.setAutoCommit(false);
             ResultSet rs = statement.executeQuery(String.format("SELECT * FROM Products WHERE Id_product='%d';", id));
-            while (rs.next()) {
+            if (rs.next()) {
                 String name = rs.getString("Name");
                 String description = rs.getString("Description");
                 double price = rs.getFloat("Price");
@@ -226,7 +226,8 @@ public class ProductDAO extends DataBaseDAO implements DAO{
                 int numberOfRates = rs.getInt("Number_of_rates");
 
                 Product chosenProduct = new Product(id, name, description, price, quantity, idCategory, rating, numberOfRates, isAvailable);
-
+                //rs.close();
+                //statement.close();
                 return chosenProduct;
             }
 

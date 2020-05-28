@@ -6,10 +6,7 @@ import com.codecool.coffeeteashop.view.Input;
 import com.codecool.coffeeteashop.view.UI;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class Cart {
     private UI ui = new UI();
@@ -107,9 +104,25 @@ public class Cart {
 
     @Override
     public String toString() {
-        return "Cart{" +
+        String output = user.getName() + " " + user.getSurname() + "\n" ;
+        //for (int j = 0; j<products.size(); j++) {
+          //  output += products.get(j).getName() + "\n"; //product.getName() + " " + product.getPrice() + "\n";
+        //}
+        //products.get(0).toString();
+        StringBuilder stringBuilder = new StringBuilder(user.toString());
+
+        MartaIterator<Product> productIterator = new MartaIterator<Product>(products);
+        //stringBuilder.append(user);
+        while (productIterator.hasNext()) {
+            Product product = productIterator.next();
+            stringBuilder.append(product);
+        }
+       /* return "Cart{" +
                 "user=" + user +
                 ", products=" + products +
-                '}';
+                "}";*/
+        return stringBuilder.toString();
     }
+
+
 }
